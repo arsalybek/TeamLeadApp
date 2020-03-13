@@ -15,8 +15,10 @@ import android.widget.LinearLayout;
 
 import com.ramotion.cardslider.CardSliderLayoutManager;
 import com.ramotion.cardslider.CardSnapHelper;
+import com.ramotion.expandingcollection.ECPagerView;
 
 public class EmpListFragment extends Fragment {
+    private ECPagerView ecPagerView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +30,16 @@ public class EmpListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_emp_list, container, false);
         EmpListAdapter empListAdapter= new EmpListAdapter();
         RecyclerView recyclerView = view.findViewById(R.id.recyler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(new CardSliderLayoutManager(getActivity()));
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        //layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+//       CardSliderLayoutManager cardSliderLayoutManager = new CardSliderLayoutManager(getActivity());
+//        cardSliderLayoutManager.getActiveCardRight();
+//        cardSliderLayoutManager.getCardWidth();
+
+        CardSliderLayoutManager manager = new CardSliderLayoutManager(10, 300, 80F);
+        manager.getCardsGap();
+        recyclerView.setLayoutManager(manager);
         new CardSnapHelper().attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(empListAdapter);
         return view;

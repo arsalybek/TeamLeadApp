@@ -1,109 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LoginFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    android:background="@color/colorDarkYellow"
-    android:orientation="vertical">
+    <LinearLayout
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_layout"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/login_layout"
-        >
+        android:layout_height="match_parent"
 
-        <ImageView
-            android:id="@+id/m_tiger"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:src="@drawable/ic_tiger"
-            app:layout_constraintBottom_toTopOf="@+id/m_logo"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/m_logo"
-            android:layout_width="128dp"
-            android:layout_height="36dp"
-            android:src="@drawable/rbk"
-            app:layout_constraintBottom_toTopOf="@+id/m_login_input"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/m_tiger" />
+        android:background="@color/colorDarkYellow"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/m_login_input"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:gravity="center"
-            android:hint="YOUR LOGIN"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorDarkYellow"
-            android:textColorHint="@color/colorDarkYellow"
-            app:backgroundTint="@color/colorLightYellow"
-            app:layout_constraintBottom_toTopOf="@+id/m_pass_input"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/m_logo" />
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/m_pass_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="ENTER PASSWORD"
-            android:inputType="textPersonName"
-            android:textColor="@color/colorDarkYellow"
-            android:textColorHint="@color/colorDarkYellow"
-            app:backgroundTint="@color/colorLightYellow"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/m_login_input" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/main_layout"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/rounded"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/login_layout"
+                    >
+
+                    <ImageView
+                        android:id="@+id/m_tiger"
+                        android:layout_width="256dp"
+                        android:layout_height="256dp"
+                        android:src="@drawable/ic_tiger"
+                        android:tint="#FFF"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintBottom_toTopOf="@+id/m_logo"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/m_logo"
+                        android:layout_width="128dp"
+                        android:layout_height="36dp"
+                        app:srcCompat="@drawable/rbk"
+                        android:layout_marginBottom="36dp"
+                        app:layout_constraintBottom_toTopOf="@+id/m_login_input"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/m_tiger" />
+
+                    <EditText
+                        android:id="@+id/m_login_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="center"
+                        android:hint="YOUR LOGIN"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorDarkYellow"
+                        app:fontFamily="@font/ibm_regular"
+                        android:textColorHint="@color/colorDarkYellow"
+                        app:backgroundTint="@color/colorLightYellow"
+                        app:layout_constraintBottom_toTopOf="@+id/m_pass_input"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/m_logo" />
+
+                    <EditText
+                        android:id="@+id/m_pass_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginLeft="16dp"
+                        android:hint="ENTER PASSWORD"
+                        app:fontFamily="@font/ibm_regular"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorDarkYellow"
+                        android:textColorHint="@color/colorDarkYellow"
+                        app:backgroundTint="@color/colorLightYellow"
+
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/m_login_input" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/login_layout"
-        app:layout_constraintTop_toBottomOf="@+id/main_layout"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
-        <TextView
-            android:id="@+id/m_login_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="Log in"
-            android:textSize="18sp"
-            android:textColor="@color/colorDarkGray"
-            app:fontFamily="sans-serif-medium"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/m_login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+                    <TextView
+                        android:id="@+id/m_login_button_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Log in"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorDarkGray"
+                        app:fontFamily="@font/ibm_regular"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/m_login_button_img"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/m_login_button_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_left"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/m_login_button_txt"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+        </ScrollView>
 
 
 
-</LinearLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</FrameLayout>
+
+
+
+
 
 
 
