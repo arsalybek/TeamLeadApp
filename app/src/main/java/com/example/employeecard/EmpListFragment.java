@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.LinearLayout;
 
+import com.ramotion.cardslider.CardSliderLayoutManager;
+import com.ramotion.cardslider.CardSnapHelper;
+
 public class EmpListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,8 @@ public class EmpListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new CardSliderLayoutManager(getActivity()));
+        new CardSnapHelper().attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(empListAdapter);
         return view;
     }

@@ -26,7 +26,7 @@
             android:id="@+id/m_tiger"
             android:layout_width="128dp"
             android:layout_height="128dp"
-            android:src="@drawable/tiger1"
+            android:src="@drawable/ic_tiger"
             app:layout_constraintBottom_toTopOf="@+id/m_logo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
