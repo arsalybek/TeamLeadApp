@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SplashActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
 
-            startActivity(new Intent(this,MainActivity.class));
+        super.onCreate(savedInstanceState, persistentState);
+        startActivity(new Intent(this,MainActivity.class));
+        finish();
+
     }
 }

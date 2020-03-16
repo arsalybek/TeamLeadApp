@@ -7,7 +7,7 @@
     <color name="colorLightYellow">#FBC63F</color>
     <color name="colorDarkGray">#1F1A17</color>
     <color name="colorGray">#DCDCDC</color>
-
+    <color name="colorWhite">#FFF</color>
     <integer-array name="tiger_colors">
         <item>@color/colorGray</item>
         <item>@color/colorGray</item>
