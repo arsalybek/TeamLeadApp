@@ -7,4 +7,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="SplashScreenTheme" parent = "Theme.AppCompat.NoActionBar">
+    <item  name="android:windowBackground">@drawable/splash_animation</item>
+</style>
 </resources>

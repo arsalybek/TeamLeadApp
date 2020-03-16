@@ -32,11 +32,6 @@ public class EmpListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyler_view);
         //LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         //layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-
-//       CardSliderLayoutManager cardSliderLayoutManager = new CardSliderLayoutManager(getActivity());
-//        cardSliderLayoutManager.getActiveCardRight();
-//        cardSliderLayoutManager.getCardWidth();
-
         CardSliderLayoutManager manager = new CardSliderLayoutManager(10, 300, 80F);
         manager.getCardsGap();
         recyclerView.setLayoutManager(manager);

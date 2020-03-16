@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ramotion.expandingcollection.ECPagerView;
+
 public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListHolder> {
     @NonNull
     @Override
@@ -51,14 +53,16 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
     public class EmpListHolder extends RecyclerView.ViewHolder {
         ImageView emp_img;
         TextView emp_fio,emp_pos,emp_skills;
-        CardView emp_card;
+        CardView card_view;
+        ECPagerView page_view;
         public EmpListHolder(@NonNull View itemView) {
             super(itemView);
             emp_img = itemView.findViewById(R.id.m_emp_img);
             emp_fio = itemView.findViewById(R.id.m_emp_fio);
             emp_pos = itemView.findViewById(R.id.m_emp_pos);
             emp_skills = itemView.findViewById(R.id.m_emp_skills);
-            emp_card = itemView.findViewById(R.id.m_cardview);
+//            page_view = itemView.findViewById(R.id.m_pager_view);
+            card_view = itemView.findViewById(R.id.m_cardview);
         }
     }
 

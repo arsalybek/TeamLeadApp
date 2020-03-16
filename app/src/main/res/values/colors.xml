@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#2b2a28</color>
+    <color name="colorPrimaryDark">#1F1A17</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorDarkYellow">#FBBA00</color>
     <color name="colorLightYellow">#FBC63F</color>
-    <color name="colorDarkGray">#2b2a28</color>
+    <color name="colorDarkGray">#1F1A17</color>
+    <color name="colorGray">#DCDCDC</color>
 
+    <integer-array name="tiger_colors">
+        <item>@color/colorGray</item>
+        <item>@color/colorGray</item>
+        <item>@color/colorGray</item>
+        <item>@color/colorGray</item>
+        <item>@color/colorGray</item>
+        <item>@color/colorGray</item>
+    </integer-array>
 </resources>
