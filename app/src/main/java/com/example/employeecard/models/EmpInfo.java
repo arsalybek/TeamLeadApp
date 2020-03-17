@@ -1,10 +1,6 @@
-package com.example.employeecard;
+package com.example.employeecard.models;
 
-import com.ramotion.expandingcollection.ECCardData;
-
-import java.util.List;
-
-public class EmpInfo implements ECCardData<String> {
+public class EmpInfo  {
     private String fio;
     private String skills;
     private String position;
@@ -53,20 +49,5 @@ public class EmpInfo implements ECCardData<String> {
 
     public int getAngScore() {
         return angScore;
-    }
-
-    @Override
-    public Integer getMainBackgroundResource() {
-        return null;
-    }
-
-    @Override
-    public Integer getHeadBackgroundResource() {
-        return null;
-    }
-
-    @Override
-    public List<String> getListItems() {
-        return null;
     }
 }

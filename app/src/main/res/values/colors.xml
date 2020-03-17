@@ -3,17 +3,22 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#1F1A17</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorDarkYellow">#FBBA00</color>
-    <color name="colorLightYellow">#FBC63F</color>
-    <color name="colorDarkGray">#1F1A17</color>
-    <color name="colorGray">#DCDCDC</color>
+    <color name="colorDarkYellow">#F5C416</color>
+    <color name="colorLightYellow">#9AF5C416</color>
+    <color name="colorDarkGray">#191919</color>
+    <color name="colorLightGray">#2B2B2B</color>
+    <color name="colorGray">#262626</color>
     <color name="colorWhite">#FFF</color>
-    <integer-array name="tiger_colors">
-        <item>@color/colorGray</item>
-        <item>@color/colorGray</item>
-        <item>@color/colorGray</item>
-        <item>@color/colorGray</item>
-        <item>@color/colorGray</item>
-        <item>@color/colorGray</item>
+    <color name="colorBlue">#43A9CF</color>
+
+    <integer-array name="rbk_logo_colors">
+        <item>@color/colorDarkGray</item>
+        <item>@color/colorDarkGray</item>
+        <item>@color/colorDarkGray</item>
+        <item>@color/colorDarkGray</item>
+        <item>@color/colorDarkGray</item>
+        <item>@color/colorDarkGray</item>
+        <item>@color/colorDarkGray</item>
+
     </integer-array>
 </resources>

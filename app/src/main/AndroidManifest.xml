@@ -10,16 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/SplashScreenTheme">
+            android:name=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize|stateHidden">
-        </activity>
+        <activity android:name=".activities.SecondActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
     </application>
+
 </manifest>

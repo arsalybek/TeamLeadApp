@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5C416">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="-2dp">
-
-    </FrameLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.jaredrummler.android.widget.AnimatedSvgView
+        android:id="@+id/m_rbk_animation"
+        android:layout_width="512dp"
+        android:layout_height="256dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="95dp"
+        app:animatedSvgFillColors="@array/rbk_logo_colors"
+        app:animatedSvgGlyphStrings="@array/rbk_logo_strings"
+        app:animatedSvgFillStart="1200"
+        app:animatedSvgFillTime="2000"
+        app:animatedSvgImageSizeX="400"
+        app:animatedSvgImageSizeY="200"
+        app:animatedSvgTraceTime="2000"
+        app:animatedSvgTraceTimePerGlyph="3000"/>
+</FrameLayout>

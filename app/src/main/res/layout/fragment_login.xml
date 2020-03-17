@@ -24,103 +24,62 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:id="@+id/main_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/rounded"
-                    app:layout_constraintBottom_toTopOf="@+id/login_layout"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                   <!-- <ImageView
-                        android:id="@+id/m_tiger"
-                        android:layout_width="128dp"
-                        android:layout_height="128dp"
-                        android:layout_marginTop="24dp"
-                        android:src="@drawable/ic_tiger"
-                        android:tint="#FFF"
-                        app:layout_constraintBottom_toTopOf="@+id/m_logo"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />-->
-                    <com.jaredrummler.android.widget.AnimatedSvgView
-                        android:id="@+id/m_tiger"
-                        android:layout_width="224dp"
-                        android:layout_height="256dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_gravity="center"
-                        app:animatedSvgFillColors="@array/tiger_colors"
-                        app:animatedSvgGlyphStrings="@array/tiger_strings"
-                        app:animatedSvgFillStart="1200"
-                        app:animatedSvgFillTime="1000"
-                        app:animatedSvgImageSizeX="400"
-                        app:animatedSvgImageSizeY="400"
-                        app:animatedSvgTraceTime="2000"
-                        app:animatedSvgTraceTimePerGlyph="1000"
-                        app:layout_constraintBottom_toTopOf="@+id/m_logo"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-                    <ImageView
-                        android:id="@+id/m_logo"
-                        android:layout_width="128dp"
-                        android:layout_height="36dp"
-                        android:layout_marginBottom="36dp"
-                        android:src="@drawable/ic_rbk_logo"
-                        android:tint="#DCDCDC"
-                        app:layout_constraintBottom_toTopOf="@+id/m_login_input"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/m_tiger" />
-
+                    <in.codeshuffle.typewriterview.TypeWriterView
+                        android:id="@+id/m_welcome_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="50sp"
+                        android:fontFamily="@font/raleway_medium"
+                        android:gravity="center"
+                        android:textColor="@color/colorDarkYellow"
+                        android:layout_marginBottom="130dp"/>
                     <EditText
                         android:id="@+id/m_login_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:gravity="center"
-                        android:hint="YOUR LOGIN"
+                        android:layout_marginHorizontal="48dp"
                         android:inputType="textPersonName"
                         android:textColor="@color/colorDarkYellow"
-                        android:textColorHint="@color/colorDarkYellow"
                         app:backgroundTint="@color/colorLightYellow"
-                        app:fontFamily="@font/ibm_regular"
-                        app:layout_constraintBottom_toTopOf="@+id/m_pass_input"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/m_logo" />
+                        android:drawableLeft="@drawable/ic_user"
+                        android:drawableStart="@drawable/ic_user"
+                        android:layout_marginBottom="36dp"/>
 
                     <EditText
                         android:id="@+id/m_pass_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:gravity="center"
-                        android:hint="ENTER PASSWORD"
+                        android:layout_marginHorizontal="48dp"
                         android:inputType="textPersonName"
                         android:textColor="@color/colorDarkYellow"
-                        android:textColorHint="@color/colorDarkYellow"
                         app:backgroundTint="@color/colorLightYellow"
-                        app:fontFamily="@font/ibm_regular"
+                        android:drawableLeft="@drawable/ic_pass"
+                        android:drawableStart="@drawable/ic_pass"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Forgot password?"
+                        android:layout_gravity="end"
+                        android:textAlignment="textEnd"
+                        android:layout_marginRight="48dp"
+                        android:textColor="@color/colorBlue"
+                        android:fontFamily="@font/raleway_medium"/>
 
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/m_login_input" />
 
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
+                </LinearLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/m_login_button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    >
+                    android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/m_login_button_txt"
                         android:layout_width="wrap_content"
@@ -130,7 +89,7 @@
                         android:text="Log in"
                         android:textSize="18sp"
                         android:textColor="@color/colorDarkGray"
-                        app:fontFamily="@font/ibm_regular"
+                        app:fontFamily="@font/raleway_medium"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -142,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_arrow_left"
                         android:layout_marginLeft="70dp"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
