@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorDarkGray"
     android:id="@+id/emp_list">
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/recyler_view" />
+<!--    <com.ramotion.expandingcollection.examples.full.view.ItemsCountView-->
+<!--        android:id="@+id/items_count_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="120dp"-->
+<!--        android:clipChildren="false"-->
+<!--        android:orientation="horizontal" />-->
+
     <com.ramotion.expandingcollection.ECPagerView
         xmlns:ec="http://schemas.android.com/apk/res-auto"
         android:id="@+id/m_pager_view"
@@ -20,4 +25,4 @@
         ec:cardWidth="250dp"
         >
     </com.ramotion.expandingcollection.ECPagerView>
-</FrameLayout>
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.employeecard;
+package com.example.employeecard.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import com.example.employeecard.R;
 
 public class ItemsCountView extends LinearLayout {
     private TextSwitcher textSwitcher;

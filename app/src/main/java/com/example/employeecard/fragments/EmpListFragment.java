@@ -1,29 +1,27 @@
 package com.example.employeecard.fragments;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.employeecard.CardDataImpl;
-import com.example.employeecard.CardListItemAdapter;
+import com.example.employeecard.adapters.EmpDetailAdapter;
+import com.example.employeecard.adapters.ItemsCountView;
+import com.example.employeecard.models.CardData;
 import com.example.employeecard.R;
-import com.example.employeecard.models.EmpInfo;
+import com.example.employeecard.models.EmpContainer;
 import com.ramotion.expandingcollection.ECCardData;
 import com.ramotion.expandingcollection.ECPagerView;
 import com.ramotion.expandingcollection.ECPagerViewAdapter;
 
-import java.util.List;
-
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
 public class EmpListFragment extends Fragment {
     private ECPagerView ecPagerView;
@@ -32,32 +30,35 @@ public class EmpListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_emp_list, container, false);
         ecPagerView = view.findViewById(R.id.m_pager_view);
 
-        // Generate example dataset
-        List<ECCardData> dataset = CardDataImpl.generateExampleData();
-
-        // Implement pager adapter and attach it to pager view
-        ECPagerViewAdapter ecPagerViewAdapter = new ECPagerViewAdapter(getContext(), dataset) {
+        ECPagerViewAdapter ecPagerViewAdapter = new ECPagerViewAdapter(getContext(), new EmpContainer().getDataset()) {
             @Override
             public void instantiateCard(LayoutInflater inflaterService, ViewGroup head, final ListView list, ECCardData data) {
                 // Data object for current card
-                CardDataImpl cardData = (CardDataImpl) data;
+                CardData cardData = (CardData) data;
 
-                // Set adapter and items to current card content list
-                final List<EmpInfo> listItems = cardData.getListItems();
-                final CardListItemAdapter listItemAdapter = new CardListItemAdapter(getContext(), listItems);
-                list.setAdapter(listItemAdapter);
-                // Also some visual tuning can be done here
+                // Create adapter for list inside a card and set adapter to card content
+                EmpDetailAdapter empDetailAdapter = new EmpDetailAdapter(getContext(), cardData.getListItems());
+                list.setAdapter(empDetailAdapter);
+                list.setDivider(getResources().getDrawable(R.drawable.list_divider));
+                list.setDividerHeight((int) pxFromDp(getContext(), 0.5f));
+                list.setSelector(R.color.transparent);
                 list.setBackgroundColor(Color.WHITE);
+                list.setCacheColorHint(Color.TRANSPARENT);
 
-                // Here we can create elements for head view or inflate layout from xml using inflater service
-                TextView cardTitle = new TextView(getContext());
-                cardTitle.setText(cardData.getCardTitle());
-                cardTitle.setTextSize(COMPLEX_UNIT_DIP, 20);
-                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-                layoutParams.gravity = Gravity.CENTER;
-                head.addView(cardTitle, layoutParams);
+                // Inflate main header layout and attach it to header root view
+                inflaterService.inflate(R.layout.emp_card_data, head);
 
-                // Card toggling by click on head element
+                // Set header data from data object
+                ImageView avatar = (ImageView) head.findViewById(R.id.m_emp_img);
+                avatar.setImageResource(cardData.getM_emp_img());
+                TextView nameSur = (TextView) head.findViewById(R.id.m_emp_fio);
+                nameSur.setText(cardData.getM_emp_fio());
+                TextView skills = (TextView) head.findViewById(R.id.m_emp_skills);
+                nameSur.setText(cardData.getM_emp_skills());
+                TextView position = (TextView) head.findViewById(R.id.m_emp_pos);
+                nameSur.setText(cardData.getM_emp_position());
+
+                // Add onclick listener to card header for toggle card state
                 head.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
@@ -67,7 +68,22 @@ public class EmpListFragment extends Fragment {
             }
         };
         ecPagerView.setPagerViewAdapter(ecPagerViewAdapter);
-
+//
+//        final ItemsCountView itemsCountView = view.findViewById(R.id.items_count_view);
+//        ecPagerView.setOnCardSelectedListener(new ECPagerView.OnCardSelectedListener() {
+//            @Override
+//            public void cardSelected(int newPosition, int oldPosition, int totalElements) {
+//                itemsCountView.update(newPosition, oldPosition, totalElements);
+//            }
+//        });
         return view;
+    }
+
+    public static float dpFromPx(final Context context, final float px) {
+        return px / context.getResources().getDisplayMetrics().density;
+    }
+
+    public static float pxFromDp(final Context context, final float dp) {
+        return dp * context.getResources().getDisplayMetrics().density;
     }
 }

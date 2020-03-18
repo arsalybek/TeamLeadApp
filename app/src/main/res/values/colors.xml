@@ -10,6 +10,8 @@
     <color name="colorGray">#262626</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorBlue">#43A9CF</color>
+    <color name="colorListDivider">#e6e6e6</color>
+    <color name="transparent">#00ffffff</color>
 
     <integer-array name="rbk_logo_colors">
         <item>@color/colorDarkGray</item>

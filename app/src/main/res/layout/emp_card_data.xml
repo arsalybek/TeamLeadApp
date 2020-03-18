@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDarkGray">
+
+    <LinearLayout
+        android:id="@+id/first_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/m_emp_img"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@mipmap/ic_launcher"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/first_div"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+            <TextView
+                android:id="@+id/m_emp_fio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name Surname"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/m_emp_pos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Position"
+                android:textSize="13dp"/>
+
+            <TextView
+                android:id="@+id/m_emp_skills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skills"
+                android:textSize="15dp"/>
+    </LinearLayout>
+</RelativeLayout>
