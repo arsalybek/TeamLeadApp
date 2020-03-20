@@ -25,10 +25,6 @@ public class LoginFragment extends Fragment  {
 
         ConstraintLayout login = view.findViewById(R.id.m_login_button);
 
-        TypeWriterView typeWriterView=(TypeWriterView)view.findViewById(R.id.m_welcome_txt);
-        typeWriterView.setDelay(400);
-        typeWriterView.setWithMusic(true);
-        typeWriterView.animateText("WELCOME to\n my app");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

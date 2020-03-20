@@ -8,19 +8,10 @@
     <color name="colorDarkGray">#191919</color>
     <color name="colorLightGray">#2B2B2B</color>
     <color name="colorGray">#262626</color>
+    <color name="colorTransparent">#9A9A9A</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorBlue">#43A9CF</color>
     <color name="colorListDivider">#e6e6e6</color>
     <color name="transparent">#00ffffff</color>
 
-    <integer-array name="rbk_logo_colors">
-        <item>@color/colorDarkGray</item>
-        <item>@color/colorDarkGray</item>
-        <item>@color/colorDarkGray</item>
-        <item>@color/colorDarkGray</item>
-        <item>@color/colorDarkGray</item>
-        <item>@color/colorDarkGray</item>
-        <item>@color/colorDarkGray</item>
-
-    </integer-array>
 </resources>

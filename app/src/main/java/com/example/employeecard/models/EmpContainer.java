@@ -14,7 +14,8 @@ public class EmpContainer {
         dataset = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             CardData card = new CardData(R.drawable.employee_img, "Popova Natalya Aleksandrovna", "Visual Design Experience on strong UI/UX.Working knowledge" +
-                    " of PhotoshopSketch", i+1 + "Front End Developer");
+                    " of PhotoshopSketch", i+1 + ".Front End Developer");
+            card.setListItems(mEmpDetailList());
             dataset.add(card);
         }
     }

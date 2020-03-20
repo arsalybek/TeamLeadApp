@@ -5,24 +5,46 @@
     android:layout_height="match_parent"
     android:background="@color/colorDarkGray"
     android:id="@+id/emp_list">
-<!--    <com.ramotion.expandingcollection.examples.full.view.ItemsCountView-->
-<!--        android:id="@+id/items_count_view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="120dp"-->
-<!--        android:clipChildren="false"-->
-<!--        android:orientation="horizontal" />-->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow"
+        android:background="@android:color/transparent"
+        android:tint="@color/colorDarkYellow"
+        android:layout_margin="16dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_view_headline"
+        android:background="@android:color/transparent"
+        android:tint="@color/colorDarkYellow"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp" />
 
     <com.ramotion.expandingcollection.ECPagerView
         xmlns:ec="http://schemas.android.com/apk/res-auto"
         android:id="@+id/m_pager_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         ec:cardHeaderHeightExpanded="150dp"
-        ec:cardHeight="200dp"
-        ec:cardWidth="250dp"
-        >
-    </com.ramotion.expandingcollection.ECPagerView>
-</RelativeLayout>
+        ec:cardHeight="550dp"
+        ec:cardWidth="350dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+<!--        <com.example.employeecard.adapters.ItemsCountView-->
+<!--            android:id="@+id/items_count_view"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:clipChildren="false"-->
+<!--            android:orientation="horizontal"-->
+<!--            />-->
+
+
+        </com.ramotion.expandingcollection.ECPagerView>
+    </RelativeLayout>
