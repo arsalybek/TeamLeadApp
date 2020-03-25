@@ -8,14 +8,14 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow"
+        android:src="@drawable/ic_app"
         android:background="@android:color/transparent"
         android:tint="@color/colorDarkYellow"
         android:layout_margin="16dp"/>
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_view_headline"
+        android:src="@drawable/ic_lead"
         android:background="@android:color/transparent"
         android:tint="@color/colorDarkYellow"
         android:layout_alignParentEnd="true"
@@ -27,12 +27,10 @@
         android:id="@+id/m_pager_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ec:cardHeaderHeightExpanded="150dp"
+        ec:cardHeaderHeightExpanded="60dp"
         ec:cardHeight="550dp"
         ec:cardWidth="350dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginTop="45dp">
 
 <!--        <com.example.employeecard.adapters.ItemsCountView-->
 <!--            android:id="@+id/items_count_view"-->

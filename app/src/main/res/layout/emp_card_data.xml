@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDarkGray"
-    >
+    android:background="@color/colorDarkGray">
 
     <LinearLayout
         android:id="@+id/first_div"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/m_emp_img"
@@ -19,46 +19,27 @@
         android:layout_height="214dp"
         android:src="@mipmap/ic_launcher"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="50dp"
         />
-    </LinearLayout>
 
+<!--        <pl.droidsonroids.gif.GifImageView-->
+<!--            android:id="@+id/m_emp_img"-->
+<!--            android:layout_width="214dp"-->
+<!--            android:layout_height="214dp"-->
+<!--            android:src="@drawable/avatar_gif"-->
+<!--            android:layout_marginTop="50dp"-->
+
+<!--            />-->
+    </LinearLayout>
     <LinearLayout
-        android:id="@+id/second_div"
+        android:id="@+id/middle_div"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
         android:layout_below="@id/first_div"
-        android:background="@color/colorWhite"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="16dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        android:gravity="end">
 
-            <TextView
-                android:id="@+id/m_emp_fio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name Surname"
-                android:textSize="30sp"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor="@android:color/black"
-                android:padding="4dp" />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_bookmark"
-                android:background="@android:color/transparent"
-                android:tint="@color/colorDarkYellow"
-                android:layout_marginTop="10dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="8dp"
-            android:layout_marginBottom="4dp">
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,124 +47,147 @@
             android:background="@android:color/transparent"
             android:tint="@color/colorDarkYellow"
             />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
-                android:background="@android:color/transparent"
-                android:tint="@color/colorDarkYellow"
-                />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
-                android:background="@android:color/transparent"
-                android:tint="@color/colorDarkYellow"
-                />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
-                android:background="@android:color/transparent"
-                android:tint="@color/colorDarkYellow"
-                />
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star"
-                android:background="@android:color/transparent"
-                android:tint="@color/colorDarkYellow"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5.0"
-                android:textColor="@color/colorDarkYellow"
-                android:fontFamily="@font/bahnschrit"
-                android:textSize="20sp"
-                android:layout_marginLeft="4dp"/>
-
-    </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="32dp"
-            android:layout_height="0.5dp"
-            android:background="@color/colorTransparent"/>
-            <TextView
-                android:id="@+id/m_emp_pos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Position"
-                android:textSize="20sp"
-                android:padding="4dp"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor="@android:color/black"/>
-
-            <TextView
-                android:id="@+id/m_emp_skills"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Skills"
-                android:textSize="15sp"
-                android:padding="4dp"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor="@android:color/black"/>
-        <LinearLayout
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor="@android:color/black"
-                android:text="5"
-                android:textSize="64sp"
-                android:layout_marginHorizontal="8dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor="@android:color/black"
-                android:text="5"
-                android:textSize="64sp"
-                android:layout_marginHorizontal="8dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor="@android:color/black"
-                android:text="5"
-                android:textSize="64sp"
-                android:layout_marginHorizontal="8dp"/>
-        </LinearLayout>
-        <LinearLayout
+            android:src="@drawable/ic_star"
+            android:background="@android:color/transparent"
+            android:tint="@color/colorDarkYellow"
+            />
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor= "@color/colorDarkGray"
-                android:text="Angular"
-                android:textSize="16sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor= "@color/colorDarkGray"
-                android:text="Java"
-                android:textSize="16sp"
-                android:layout_marginHorizontal="8dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bahnschrit"
-                android:textColor= "@color/colorDarkGray"
-                android:text="DB"
-                android:textSize="16sp"
-                android:layout_marginHorizontal="8dp"/>
-        </LinearLayout>
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_star"
+            android:tint="@color/colorDarkYellow" />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            android:background="@android:color/transparent"
+            android:tint="@color/colorDarkYellow"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_star"
+            android:background="@android:color/transparent"
+            android:tint="@color/colorDarkYellow"
+            />
     </LinearLayout>
-</RelativeLayout>
+            <LinearLayout
+                android:id="@+id/second_div"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/middle_div"
+                android:background="@color/colorWhite"
+                android:orientation="vertical"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="16dp">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+<!--                <View-->
+<!--                    android:layout_width="15dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:background="@color/colorBlue"/>-->
+                    <TextView
+                        android:id="@+id/m_emp_fio"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Name Surname"
+                        android:textSize="25sp"
+                        android:fontFamily="@font/bahnschrit"
+                        android:textColor="@android:color/black"
+                        android:padding="4dp" />
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_bookmark"
+                        android:background="@android:color/transparent"
+                        android:tint="@color/colorDarkYellow"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginHorizontal="8dp"/>
+            </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/m_emp_pos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Position"
+                        android:background="@color/colorBlue"
+                        android:textSize="18sp"
+                        android:padding="4dp"
+                        android:fontFamily="@font/bahnschrit"
+                        android:textColor="@android:color/white"
+                        android:layout_margin="4dp"/>
+                    <TextView
+                        android:id="@+id/m_emp_skills"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Skills"
+                        android:textSize="15sp"
+                        android:padding="4dp"
+                        android:fontFamily="@font/bahnschrit"
+                        android:textColor="@android:color/black"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textSize="32sp"
+                        android:layout_marginHorizontal="32dp"
+                        android:textColor="@android:color/black"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="5"
+                        android:textSize="32sp"
+                        android:layout_marginHorizontal="32dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:text="5"
+                        android:textSize="32sp"
+                        android:layout_marginHorizontal="32dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bahnschrit"
+                        android:text="Angular"
+                        android:textSize="12sp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bahnschrit"
+                        android:text="Java"
+                        android:textSize="12sp"
+                        android:layout_marginHorizontal="48dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bahnschrit"
+                        android:text="DB"
+                        android:textSize="12sp"
+                        android:layout_marginHorizontal="16dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>

@@ -1,10 +1,7 @@
 package com.example.employeecard.models;
 
-import com.example.employeecard.models.EmpDetail;
 import com.ramotion.expandingcollection.ECCardData;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CardData implements ECCardData<EmpDetail> {
