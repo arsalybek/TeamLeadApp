@@ -5,7 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorDarkYellow">#F5C416</color>
     <color name="colorLightYellow">#9AF5C416</color>
-    <color name="colorDarkGray">#191919</color>
+    <color name="colorDarkGray">#121212</color>
     <color name="colorLightGray">#2B2B2B</color>
     <color name="colorGray">#262626</color>
     <color name="colorTransparent">#9A9A9A</color>
@@ -13,5 +13,12 @@
     <color name="colorBlue">#43A9CF</color>
     <color name="colorListDivider">#e6e6e6</color>
     <color name="transparent">#00ffffff</color>
+
+
+    <color name="android">#A4C639</color>
+    <color name="ios">#FFECB3</color>
+    <color name="front">#FF5722</color>
+    <color name="back">#3472A3</color>
+
 
 </resources>

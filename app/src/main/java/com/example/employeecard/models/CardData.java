@@ -1,5 +1,9 @@
 package com.example.employeecard.models;
 
+
+
+import androidx.core.util.Pair;
+
 import com.ramotion.expandingcollection.ECCardData;
 
 import java.util.List;
@@ -7,19 +11,20 @@ import java.util.List;
 public class CardData implements ECCardData<EmpDetail> {
 
     private int m_emp_img;
+    private int m_emp_img_border;
+    private int m_emp_card_back;
     private String m_emp_fio;
-    private String m_emp_skills;
     private String m_emp_position;
-    private int m_emp_javaScore;
-    private int m_emp_dbScore;
-    private int m_emp_angScore;
+    private List<Pair<Integer,String>> m_emp_skills;
     private List<EmpDetail> mEmpDetailList;
 
-    public CardData(int m_emp_img, String m_emp_fio, String m_emp_skills, String m_emp_position) {
+    public CardData(int m_emp_img,int m_emp_img_border,int m_emp_card_back, String m_emp_fio, String m_emp_position, List<Pair<Integer, String>> m_emp_skills) {
         this.m_emp_img = m_emp_img;
+        this.m_emp_img_border = m_emp_img_border;
+        this.m_emp_card_back = m_emp_card_back;
         this.m_emp_fio = m_emp_fio;
-        this.m_emp_skills = m_emp_skills;
         this.m_emp_position = m_emp_position;
+        this.m_emp_skills = m_emp_skills;
     }
 
     public int getM_emp_img() {
@@ -38,14 +43,6 @@ public class CardData implements ECCardData<EmpDetail> {
         this.m_emp_fio = m_emp_fio;
     }
 
-    public String getM_emp_skills() {
-        return m_emp_skills;
-    }
-
-    public void setM_emp_skills(String m_emp_skills) {
-        this.m_emp_skills = m_emp_skills;
-    }
-
     public String getM_emp_position() {
         return m_emp_position;
     }
@@ -54,28 +51,19 @@ public class CardData implements ECCardData<EmpDetail> {
         this.m_emp_position = m_emp_position;
     }
 
-    public int getM_emp_javaScore() {
-        return m_emp_javaScore;
+    public List<Pair<Integer, String>> getM_emp_skills() {
+        return m_emp_skills;
+    }
+    public void setM_emp_skills(List<Pair<Integer, String>> m_emp_skills) {
+        this.m_emp_skills = m_emp_skills;
     }
 
-    public void setM_emp_javaScore(int m_emp_javaScore) {
-        this.m_emp_javaScore = m_emp_javaScore;
+    public List<EmpDetail> getEmpDetailList() {
+        return mEmpDetailList;
     }
 
-    public int getM_emp_dbScore() {
-        return m_emp_dbScore;
-    }
-
-    public void setM_emp_dbScore(int m_emp_dbScore) {
-        this.m_emp_dbScore = m_emp_dbScore;
-    }
-
-    public int getM_emp_angScore() {
-        return m_emp_angScore;
-    }
-
-    public void setM_emp_angScore(int m_emp_angScore) {
-        this.m_emp_angScore = m_emp_angScore;
+    public void setEmpDetailList(List<EmpDetail> empDetailList) {
+        mEmpDetailList = empDetailList;
     }
 
     @Override
@@ -87,8 +75,6 @@ public class CardData implements ECCardData<EmpDetail> {
         this.mEmpDetailList = listItems;
     }
 
-
-
     @Override
     public Integer getMainBackgroundResource() {
         return null;
@@ -99,4 +85,19 @@ public class CardData implements ECCardData<EmpDetail> {
         return null;
     }
 
+    public int getM_emp_card_back() {
+        return m_emp_card_back;
+    }
+
+    public void setM_emp_card_back(int m_emp_card_back) {
+        this.m_emp_card_back = m_emp_card_back;
+    }
+
+    public int getM_emp_img_border() {
+        return m_emp_img_border;
+    }
+
+    public void setM_emp_img_border(int m_emp_img_border) {
+        this.m_emp_img_border = m_emp_img_border;
+    }
 }

@@ -3,24 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorDarkGray"
     android:id="@+id/emp_list">
-    <ImageButton
+
+    <TextView
+        android:id="@+id/welcome_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_app"
-        android:background="@android:color/transparent"
-        android:tint="@color/colorDarkYellow"
-        android:layout_margin="16dp"/>
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_lead"
-        android:background="@android:color/transparent"
-        android:tint="@color/colorDarkYellow"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp" />
+        android:text="WELCOME"
+        android:textColor="@color/colorDarkYellow"
+        android:fontFamily="@font/muli_regular"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"/>
 
     <com.ramotion.expandingcollection.ECPagerView
         xmlns:ec="http://schemas.android.com/apk/res-auto"
@@ -28,9 +24,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ec:cardHeaderHeightExpanded="60dp"
-        ec:cardHeight="550dp"
-        ec:cardWidth="350dp"
-        android:layout_marginTop="45dp">
+        ec:cardHeight="400dp"
+        ec:cardWidth="280dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/rounded_card"
+        android:backgroundTint="@color/colorDarkGray">
+    </com.ramotion.expandingcollection.ECPagerView>
+<!--        <com.synnapps.carouselview.CarouselView-->
+<!--            android:id="@+id/carouselView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            app:pageColor="#00000000"-->
+<!--            app:radius="6dp"-->
+<!--            app:slideInterval="3000"-->
+<!--            app:strokeColor="#FF777777"-->
+<!--            app:strokeWidth="1dp"-->
+<!--            android:layout_below="@id/m_pager_view"/>-->
 
 <!--        <com.example.employeecard.adapters.ItemsCountView-->
 <!--            android:id="@+id/items_count_view"-->
@@ -44,5 +53,5 @@
 <!--            />-->
 
 
-        </com.ramotion.expandingcollection.ECPagerView>
+
     </RelativeLayout>

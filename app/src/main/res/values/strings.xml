@@ -11,4 +11,7 @@
         <item>M52.563,18.56L36.885,47.291h4.731l3.665,-7.06h19.434l3.674,7.06h5.268L57.702,18.56H52.563L52.563,18.56zM47.294,36.558l7.716,-14.703l7.748,14.703H47.294L47.294,36.558z</item>
         <item> M140.688,18.56l-7.012,0l-17.914,12.312l0,-12.312l-4.815,0l0,28.731l4.815,0l0,-12.912l19.194,12.912l8.015,0l-23.108,-14.973l20.825,-13.758z</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

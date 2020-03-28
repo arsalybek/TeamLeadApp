@@ -12,4 +12,17 @@
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="-2dp"/>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorGray"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_navigation_bar"
+        app:itemTextColor="@color/menu_item_selected"
+        app:itemIconTint="@color/menu_item_selected"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,12 @@
 package com.example.employeecard.adapters;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,55 +18,67 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.R;
 import com.example.employeecard.fragments.EmpDetailFragment;
+import com.example.employeecard.models.CardData;
+import com.example.employeecard.models.EmpContainer;
+import com.ramotion.expandingcollection.ECCardData;
+import com.ramotion.expandingcollection.ECPagerViewAdapter;
+
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EmpListAdapter {
 
-//    ECPagerViewAdapter adapter = new ECPagerViewAdapter(this, new ExampleDataset().getDataset()) {
+//    ECPagerViewAdapter ecPagerViewAdapter = new ECPagerViewAdapter((getContext()), new EmpContainer().getDataset()) {
 //        @Override
-//        public void instantiateCard(LayoutInflater inflaterService, ViewGroup head, ListView list, final ECCardData data) {
-//            final CardData cardData = (CardData) data;
+//        public void instantiateCard(LayoutInflater inflaterService, final ViewGroup head, final ListView list, ECCardData data) {
+//            // Data object for current card
+//            CardData cardData = (CardData) data;
 //
 //            // Create adapter for list inside a card and set adapter to card content
-//            CommentArrayAdapter commentArrayAdapter = new CommentArrayAdapter(getApplicationContext(), cardData.getListItems());
-//            list.setAdapter(commentArrayAdapter);
+//            EmpDetailAdapter empDetailAdapter = new EmpDetailAdapter((getContext()), cardData.getListItems());
+//            list.setAdapter(empDetailAdapter);
 //            list.setDivider(getResources().getDrawable(R.drawable.list_divider));
-//            list.setDividerHeight((int) pxFromDp(getApplicationContext(), 0.5f));
+//            list.setDividerHeight((int) pxFromDp(getContext(), 0.5f));
 //            list.setSelector(R.color.transparent);
 //            list.setBackgroundColor(Color.WHITE);
 //            list.setCacheColorHint(Color.TRANSPARENT);
 //
-//            // Add gradient to root header view
-//            View gradient = new View(getApplicationContext());
-//            gradient.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT));
-//            gradient.setBackgroundDrawable(getResources().getDrawable(R.drawable.card_head_gradient));
-//            head.addView(gradient);
-//
 //            // Inflate main header layout and attach it to header root view
-//            inflaterService.inflate(R.layout.simple_head, head);
+//            final View cardView = inflaterService.inflate(R.layout.emp_card_data_new, head);
 //
 //            // Set header data from data object
-//            TextView title = (TextView) head.findViewById(R.id.title);
-//            title.setText(cardData.getHeadTitle());
-//            ImageView avatar = (ImageView) head.findViewById(R.id.avatar);
-//            avatar.setImageResource(cardData.getPersonPictureResource());
-//            TextView name = (TextView) head.findViewById(R.id.name);
-//            name.setText(cardData.getPersonName() + ":");
-//            TextView message = (TextView) head.findViewById(R.id.message);
-//            message.setText(cardData.getPersonMessage());
-//            TextView viewsCount = (TextView) head.findViewById(R.id.socialViewsCount);
-//            viewsCount.setText(" " + cardData.getPersonViewsCount());
-//            TextView likesCount = (TextView) head.findViewById(R.id.socialLikesCount);
-//            likesCount.setText(" " + cardData.getPersonLikesCount());
-//            TextView commentsCount = (TextView) head.findViewById(R.id.socialCommentsCount);
-//            commentsCount.setText(" " + cardData.getPersonCommentsCount());
+//            CircleImageView avatar = cardView.findViewById(R.id.m_avatar);
+//            avatar.setBorderColor(getResources().getColor(cardData.getM_emp_img_border()));
+//            avatar.setImageResource(cardData.getM_emp_img());
+//            LinearLayout linearLayout = cardView.findViewById(R.id.card_view);
+//            linearLayout.setBackgroundResource(cardData.getM_emp_card_back());
+//            TextView nameSur = cardView.findViewById(R.id.m_name);
+//            nameSur.setText(cardData.getM_emp_fio());
+//            TextView position = cardView.findViewById(R.id.m_position);
+//            position.setText(cardData.getM_emp_position());
+//            TextView levelRateOne = cardView.findViewById(R.id.m_level_rate1);
+//            TextView levelRateTwo = cardView.findViewById(R.id.m_level_rate2);
+//            TextView levelRateThree = cardView.findViewById(R.id.m_level_rate3);
+//            TextView skillOne = cardView.findViewById(R.id.m_skill1);
+//            TextView skillTwo = cardView.findViewById(R.id.m_skill2);
+//            TextView skillThree = cardView.findViewById(R.id.m_skill3);
+//            levelRateOne.setText(String.valueOf(cardData.getM_emp_skills().get(0).first));
+//            levelRateTwo.setText(String.valueOf(cardData.getM_emp_skills().get(1).first));
+//            levelRateThree.setText(String.valueOf(cardData.getM_emp_skills().get(2).first));
+//            skillOne.setText(cardData.getM_emp_skills().get(0).second);
+//            skillTwo.setText(cardData.getM_emp_skills().get(1).second);
+//            skillThree.setText(cardData.getM_emp_skills().get(2).second);
 //
 //            // Add onclick listener to card header for toggle card state
-//            head.setOnClickListener(new View.OnClickListener() {
+//            cardView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(final View v) {
 //                    ecPagerView.toggle();
 //                }
 //            });
+//
+//
 //        }
 //    };
 
