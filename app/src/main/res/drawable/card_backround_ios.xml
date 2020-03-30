@@ -3,7 +3,7 @@
     android:opacity="opaque">
     <item
         android:drawable="@drawable/ic_apple"
-        android:left="200dp"
+        android:left="209dp"
         android:top="130dp"
         android:width="95dp"
         android:height="95dp">

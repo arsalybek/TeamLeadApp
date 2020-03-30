@@ -3,7 +3,7 @@
     android:opacity="opaque">
     <item
         android:drawable="@drawable/ic_html"
-        android:left="205dp"
+        android:left="212dp"
         android:top="138dp"
         android:width="95dp"
         android:height="95dp">

@@ -1,57 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorDarkGray"
     android:id="@+id/emp_list">
-
-    <TextView
-        android:id="@+id/welcome_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WELCOME"
-        android:textColor="@color/colorDarkYellow"
-        android:fontFamily="@font/muli_regular"
-        android:textSize="20sp"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"/>
-
-    <com.ramotion.expandingcollection.ECPagerView
-        xmlns:ec="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/m_pager_view"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/ic_wave">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_height="wrap_content"
-        ec:cardHeaderHeightExpanded="60dp"
-        ec:cardHeight="400dp"
-        ec:cardWidth="280dp"
-        android:layout_marginTop="190dp"
-        android:background="@drawable/rounded_card"
-        android:backgroundTint="@color/colorDarkGray">
-    </com.ramotion.expandingcollection.ECPagerView>
-<!--        <com.synnapps.carouselview.CarouselView-->
-<!--            android:id="@+id/carouselView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            app:pageColor="#00000000"-->
-<!--            app:radius="6dp"-->
-<!--            app:slideInterval="3000"-->
-<!--            app:strokeColor="#FF777777"-->
-<!--            app:strokeWidth="1dp"-->
-<!--            android:layout_below="@id/m_pager_view"/>-->
+        android:layout_width="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="170dp" />
 
-<!--        <com.example.employeecard.adapters.ItemsCountView-->
-<!--            android:id="@+id/items_count_view"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:clipChildren="false"-->
-<!--            android:orientation="horizontal"-->
-<!--            />-->
-
-
-
+        <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+            android:id="@+id/pager_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
     </RelativeLayout>

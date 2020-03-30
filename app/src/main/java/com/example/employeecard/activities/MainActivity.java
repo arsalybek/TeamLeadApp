@@ -12,25 +12,19 @@ import android.view.MenuItem;
 import com.example.employeecard.R;
 import com.example.employeecard.fragments.DisplayFragment;
 import com.example.employeecard.fragments.EmpListFragment;
-import com.example.employeecard.fragments.LoginFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
-    private FragmentManager fm;
-    Fragment loginFragment = new LoginFragment();
-    EmpListFragment mEmpListFragment = new EmpListFragment();
-    DisplayFragment mDisplayFragment = new DisplayFragment();
+    public static FragmentManager fm;
     Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        launchLoginFragment();
         fm = getSupportFragmentManager();
         fragment = fm.findFragmentById(R.id.fragment_container);
-        fm.beginTransaction().add(R.id.fragment_container,loginFragment).commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_bar);
 
@@ -58,12 +52,5 @@ public class MainActivity extends AppCompatActivity {
         if(savedInstanceState == null){
             bottomNavigationView.setSelectedItemId(R.id.action_emp);
        }
-    }
-    public void launchLoginFragment() {
-        Fragment loginFragment = new LoginFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fragment_container, loginFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 }
