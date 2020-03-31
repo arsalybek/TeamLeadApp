@@ -1,43 +1,35 @@
 package com.example.employeecard.fragments;
 
-import android.icu.util.DateInterval;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.adapters.EmpDetailAdapter;
 import com.example.employeecard.models.CardData;
-import com.example.employeecard.models.EmpContainer;
 
 import org.jetbrains.annotations.NotNull;
 import org.joda.time.DateTime;
-import org.joda.time.Duration;
 import org.joda.time.Interval;
-import org.joda.time.Months;
-
-import java.util.Date;
-import java.util.List;
 
 public class EmpDetailFragment extends Fragment {
     private CardData card;
-    private LinearLayout mLinearLayout;
+    private ImageView mAvatar;
     private TextView mName,mPos,mExp,mAge,mEmail,mPhone;
     private ImageButton backBtn;
     private RecyclerView mRecyclerView;
     private EmpDetailAdapter mDetailAdapter;
+    private Toolbar mToolbar;
     public static EmpDetailFragment newInstance(CardData card){
         EmpDetailFragment fragment = new EmpDetailFragment();
         fragment.card = card;
@@ -54,8 +46,8 @@ public class EmpDetailFragment extends Fragment {
         mDetailAdapter = new EmpDetailAdapter(card.getM_emp_skills());
         mRecyclerView.setAdapter(mDetailAdapter);
 
-        mLinearLayout = v.findViewById(R.id.background_layout);
-        mLinearLayout.setBackgroundResource(card.getM_emp_img());
+        mAvatar = v.findViewById(R.id.m_avatar_detail);
+        mAvatar.setImageResource(card.getM_emp_img());
 
         mName = v.findViewById(R.id.m_name_detail);
         mName.setText(card.getM_emp_fio().toUpperCase());
@@ -74,6 +66,7 @@ public class EmpDetailFragment extends Fragment {
 
         mPhone = v.findViewById(R.id.m_phone_detail);
         mPhone.setText(card.getEmpDetail().getEmp_tel_number());
+
 
         backBtn = v.findViewById(R.id.back_button_detail);
         backBtn.setOnClickListener(new View.OnClickListener() {

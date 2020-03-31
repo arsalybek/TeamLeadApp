@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorDarkGray">
+        android:background="#232323">
         <TextView
             android:id="@+id/m_skill_detail"
             android:layout_width="0dp"
@@ -18,7 +18,7 @@
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             android:gravity="start"
-            android:layout_marginVertical="16dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginHorizontal="8dp"/>
         <ImageButton
             android:id="@+id/m_skill_inc"
@@ -28,7 +28,7 @@
             android:src="@drawable/ic_plus"
             android:tint="@color/colorDarkYellow"
             android:background="@android:color/transparent"
-            android:layout_marginVertical="16dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginHorizontal="16dp"
             android:padding="8dp"/>
         <TextView
@@ -41,7 +41,7 @@
             android:textSize="24sp"
             android:textColor="@color/colorBlue"
             android:fontFamily="@font/muli_bold"
-            android:layout_marginVertical="16dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginHorizontal="16dp" />
         <ImageButton
             android:id="@+id/m_skill_dec"
@@ -51,7 +51,7 @@
             android:src="@drawable/ic_minus"
             android:tint="@color/colorDarkYellow"
             android:background="@android:color/transparent"
-            android:layout_marginVertical="16dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginHorizontal="16dp"
             android:padding="8dp" />
     </LinearLayout>
