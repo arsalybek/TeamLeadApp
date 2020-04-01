@@ -6,6 +6,7 @@ import androidx.core.util.Pair;
 import com.example.employeecard.R;
 
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,5 +49,5 @@ public class EmpContainer {
         return dataset;
     }
 
-    private EmpDetail empDetail = new EmpDetail(new DateTime(2018, 7, 22, 0, 0, 0, 0),27,"admin@gmail.com","+77057851992");
+    private EmpDetail empDetail = new EmpDetail(new LocalDate(2020, 1, 31),27,"admin@gmail.com","+77057851992");
 }

@@ -1,6 +1,6 @@
 package com.example.employeecard.adapters;
 
-import androidx.core.util.Pair;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +9,21 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.employeecard.IChange;
 import com.example.employeecard.R;
-import com.example.employeecard.models.CardData;
+import com.example.employeecard.fragments.EmpDetailFragment;
 
 import java.util.List;
 
-public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder> {
+public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder>{
     private List<Pair<Integer,String>> mSkillList;
-    public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList){
+    IChange mIChange;
+    public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList,IChange mIChange){
         this.mSkillList = mSkillList;
+        this.mIChange = mIChange;
     }
     @NonNull
     @Override
@@ -41,6 +45,9 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                 if(!(holder.skillRate.getText().toString()).equals("10")) {
                     int s = Integer.parseInt(holder.skillRate.getText().toString()) + 1;
                     holder.skillRate.setText(String.valueOf(s));
+                    mIChange.onRateChanged();
+                    Log.e("EmpDetailAdapter","true");
+
                 }
             }
         }
@@ -51,6 +58,8 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                 if(!(holder.skillRate.getText().toString()).equals("1")) {
                     int s = Integer.parseInt(holder.skillRate.getText().toString()) - 1;
                     holder.skillRate.setText(String.valueOf(s));
+                    mIChange.onRateChanged();
+                    Log.e("EmpDetailAdapter","true");
                 }
             }
         }

@@ -1,8 +1,7 @@
 package com.example.employeecard.adapters;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.R;
@@ -50,7 +48,7 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
         holder.skillOne.setText(cardData.getM_emp_skills().get(0).second);
         holder.skillTwo.setText(cardData.getM_emp_skills().get(1).second);
         holder.skillThree.setText(cardData.getM_emp_skills().get(2).second);
-
+        final Context context = null;
         holder.curView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
