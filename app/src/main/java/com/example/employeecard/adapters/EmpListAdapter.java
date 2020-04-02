@@ -32,8 +32,6 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.emp_card_data_row,parent,false);
         return new EmpListHolder(v);
     }
-
-    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull EmpListHolder holder, int i) {
         final CardData cardData = mCardDataList.get(i);
@@ -48,12 +46,12 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
         holder.skillOne.setText(cardData.getM_emp_skills().get(0).second);
         holder.skillTwo.setText(cardData.getM_emp_skills().get(1).second);
         holder.skillThree.setText(cardData.getM_emp_skills().get(2).second);
-        final Context context = null;
+
         holder.curView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EmpDetailFragment empDetailFragment = EmpDetailFragment.newInstance(cardData);
-                MainActivity.fm.beginTransaction().replace(R.id.fragment_container,empDetailFragment).commit();
+                MainActivity.fm.beginTransaction().replace(R.id.fragment_container,empDetailFragment).addToBackStack(null).commit();
             }
         });
     }

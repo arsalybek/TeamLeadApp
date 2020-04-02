@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.IChange;
+import com.example.employeecard.IntervalConverter;
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.adapters.EmpDetailAdapter;
@@ -46,19 +49,12 @@ public class EmpDetailFragment extends Fragment implements IChange{
         fragment.card = card;
         return fragment;
     }
-    private MainActivity main;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        main = (MainActivity)context;
-        super.onAttach(context);
-    }
 
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.fragment_emp_detail, container, false);
-
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         mRecyclerView = v.findViewById(R.id.m_recycler_detail);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -75,7 +71,7 @@ public class EmpDetailFragment extends Fragment implements IChange{
         mPos.setText(card.getM_emp_position().toUpperCase());
 
         mExp = v.findViewById(R.id.m_exp_detail);
-        mExp.setText(getWorkExp(card.getEmpDetail().getEmp_work_start()));
+        mExp.setText(IntervalConverter.getWorkExp(card.getEmpDetail().getEmp_work_start()));
 
         mAge = v.findViewById(R.id.m_age_detail);
         mAge.setText(String.valueOf(card.getEmpDetail().getM_emp_age()));
@@ -94,12 +90,6 @@ public class EmpDetailFragment extends Fragment implements IChange{
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragManager = main.getSupportFragmentManager();
-//                fragManager.popBackStack();
-//                Fragment fragment = new EmpListFragment();
-//                fragManager.beginTransaction().replace(R.id.fragment_container,fragment).commit();
-                //fragManager.beginTransaction().remove(me).commit();
-                Log.e("DetailFragment",getActivity().getSupportFragmentManager().getFragments().toString());
                 getActivity().getSupportFragmentManager().popBackStack();
             }
         });
@@ -109,19 +99,20 @@ public class EmpDetailFragment extends Fragment implements IChange{
         addSkillBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                card.getM_emp_skills().add(new Pair<>(1, newSkill.getText().toString()));
+                if(!(newSkill.getText().toString().equals(""))) {
+                    card.getM_emp_skills().add(new Pair<>(1, newSkill.getText().toString()));
+                    mDetailAdapter.notifyDataSetChanged();
+                    newSkill.setText("");
+                }
+                else{
+                    Toast.makeText(getActivity(),"Please,enter a skill name!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         return v;
     }
-    private String getWorkExp(LocalDate startDate){
-        LocalDate  now = new LocalDate ();
-        int monthsBetween = Months.monthsBetween(startDate, now).getMonths();
-        int yearsBetween = Years.yearsBetween(startDate, now).getYears();
-        int daysBetween = Days.daysBetween(startDate, now).getDays();
-        return "Years: " + yearsBetween +" "+ " Months: " +  monthsBetween%12 + " " + " Days: " + (daysBetween%365)%30;
-    }
+
 
     @Override
     public void onRateChanged() {
@@ -129,4 +120,12 @@ public class EmpDetailFragment extends Fragment implements IChange{
         saveChangesBtn.setBackgroundResource(R.color.colorBlue);
         saveChangesBtn.setText("Save changes");
     }
+
+    @Override
+    public void onDecBtnClicked(Pair<Integer, String> skill) {
+        card.getM_emp_skills().remove(skill);
+        mDetailAdapter.notifyDataSetChanged();
+    }
+
+
 }

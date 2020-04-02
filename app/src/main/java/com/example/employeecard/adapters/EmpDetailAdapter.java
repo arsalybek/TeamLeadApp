@@ -34,7 +34,7 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
 
     @Override
     public void onBindViewHolder(@NonNull final EmpDetailHolder holder, int i) {
-        Pair<Integer,String> skill = mSkillList.get(i);
+        final Pair<Integer,String> skill = mSkillList.get(i);
         holder.skill.setText(skill.second);
         holder.skillRate.setText(String.valueOf(skill.first));
 
@@ -60,6 +60,9 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                     holder.skillRate.setText(String.valueOf(s));
                     mIChange.onRateChanged();
                     Log.e("EmpDetailAdapter","true");
+                }
+                else{
+                    mIChange.onDecBtnClicked(skill);
                 }
             }
         }

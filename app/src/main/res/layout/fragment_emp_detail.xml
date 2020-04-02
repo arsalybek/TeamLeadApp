@@ -29,7 +29,7 @@
                         android:scaleType="centerCrop"
                         android:fitsSystemWindows="true"
                         app:layout_collapseMode="parallax"
-                        android:src="@drawable/emp_man_img"/>
+                        android:src="@drawable/emp_man_img" />
                     <View
                         android:layout_gravity="bottom"
                         android:layout_width="match_parent"
@@ -218,7 +218,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginVertical="8dp">
                 <EditText
                     android:id="@+id/m_skill_input"
                     android:layout_width="0dp"
@@ -233,9 +234,9 @@
                     android:id="@+id/m_add_skill_btn"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:background="@drawable/button_backdround"
+                    android:layout_marginHorizontal="4dp"
                     android:textColor="@color/colorWhite"
+                    android:background="@drawable/add_button_back"
                     android:text="ADD" />
             </LinearLayout>
 
@@ -244,8 +245,9 @@
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="16dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_backdround"
+                android:background="@drawable/button_background"
                 android:textColor="@color/colorWhite"
+                android:enabled="true"
                 tools:text="Save changes"
                 android:layout_gravity="bottom"/>
         </LinearLayout>
