@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#424242">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Skill"
+        android:fontFamily="@font/muli_bold"
+        android:textSize="14sp"
+        android:layout_marginVertical="8dp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please name and rate your skill"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/muli_regular"
+        android:layout_marginBottom="8dp"
+        android:textSize="14sp"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+        <EditText
+            android:id="@+id/m_skill_input"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="6"
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/colorDarkYellow"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/muli_regular"
+            android:textSize="14sp"
+            android:hint="Enter a skill name"/>
+        <NumberPicker
+            android:id="@+id/m_rate_picker"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="4dp"
+            android:theme="@style/AppTheme.Picker"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.employeecard.adapters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +12,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.employeecard.DeleteSkillDialogListener;
 import com.example.employeecard.IChange;
 import com.example.employeecard.R;
-import com.example.employeecard.fragments.EmpDetailFragment;
+import com.example.employeecard.activities.MainActivity;
+import com.example.employeecard.fragments.DeleteSkillAlertDialog;
 
 import java.util.List;
 
-public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder>{
+public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder> implements DeleteSkillDialogListener {
     private List<Pair<Integer,String>> mSkillList;
     IChange mIChange;
     public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList,IChange mIChange){
@@ -52,6 +57,7 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
             }
         }
         );
+        final DeleteSkillAlertDialog deleteSkillDialog = new DeleteSkillAlertDialog(this);
         holder.decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +68,9 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                     Log.e("EmpDetailAdapter","true");
                 }
                 else{
-                    mIChange.onDecBtnClicked(skill);
+                    deleteSkillDialog.showNow(MainActivity.fm,"delete");
                 }
+
             }
         }
         );
@@ -72,6 +79,11 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
     @Override
     public int getItemCount() {
         return mSkillList.size();
+    }
+
+    @Override
+    public void positiveClick(DialogFragment dialog) {
+        //mIChange.onDecBtnClicked(skill);
     }
 
     public class EmpDetailHolder extends RecyclerView.ViewHolder {

@@ -201,6 +201,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#232323">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -209,36 +213,22 @@
                 android:textColor="@color/colorWhite"
                 android:fontFamily="@font/muli_regular"
                 android:layout_marginHorizontal="8dp" />
+            <TextView
+                android:id="@+id/add_skill_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEW SKILL+"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlue"
+                android:fontFamily="@font/muli_bold"
+                android:layout_marginHorizontal="8dp" />
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/m_recycler_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
         </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="8dp">
-                <EditText
-                    android:id="@+id/m_skill_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:inputType="text"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@color/colorLightYellow"
-                    android:fontFamily="@font/muli_regular"
-                    android:textSize="16sp"/>
-                <Button
-                    android:id="@+id/m_add_skill_btn"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:textColor="@color/colorWhite"
-                    android:background="@drawable/add_button_back"
-                    android:text="ADD" />
-            </LinearLayout>
 
             <Button
                 android:id="@+id/m_save_button"
