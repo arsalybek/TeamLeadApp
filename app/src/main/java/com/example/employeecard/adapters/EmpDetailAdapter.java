@@ -1,7 +1,5 @@
 package com.example.employeecard.adapters;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.DeleteSkillDialogListener;
@@ -24,8 +21,9 @@ import com.example.employeecard.fragments.DeleteSkillAlertDialog;
 import java.util.List;
 
 public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder> implements DeleteSkillDialogListener {
-    private List<Pair<Integer,String>> mSkillList;
+    public List<Pair<Integer,String>> mSkillList;
     IChange mIChange;
+    public EmpDetailAdapter(){}
     public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList,IChange mIChange){
         this.mSkillList = mSkillList;
         this.mIChange = mIChange;
@@ -43,7 +41,6 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
         holder.skill.setText(skill.second);
         holder.skillRate.setText(String.valueOf(skill.first));
 
-
         holder.incBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +54,7 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
             }
         }
         );
-        final DeleteSkillAlertDialog deleteSkillDialog = new DeleteSkillAlertDialog(this);
+        final DeleteSkillAlertDialog deleteSkillDialog = new DeleteSkillAlertDialog(this,i);
         holder.decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,8 +79,8 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
     }
 
     @Override
-    public void positiveClick(DialogFragment dialog) {
-        //mIChange.onDecBtnClicked(skill);
+    public void positiveClick(int i) {
+        mIChange.onDecBtnClicked(mSkillList.get(i));
     }
 
     public class EmpDetailHolder extends RecyclerView.ViewHolder {

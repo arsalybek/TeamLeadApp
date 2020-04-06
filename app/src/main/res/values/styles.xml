@@ -24,10 +24,13 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
-    <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
-        <item name="android:textColorPrimary">@android:color/white</item>
+    <style name="TextLabel" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorLightYellow</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:fontFamily">@font/muli_bold</item>
-        <item name="colorControlNormal">@color/colorDarkYellow</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorControlNormal">@color/colorLightYellow</item>
+        <item name="colorControlActivated">@color/colorDarkYellow</item>
     </style>
+
 </resources>

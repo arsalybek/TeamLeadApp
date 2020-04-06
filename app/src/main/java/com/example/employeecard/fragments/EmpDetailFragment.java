@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -35,7 +36,6 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
     private RecyclerView mRecyclerView;
     private EmpDetailAdapter mDetailAdapter;
     private Button saveChangesBtn;
-    private EditText newSkill;
 
     public static EmpDetailFragment newInstance(CardData card) {
         EmpDetailFragment fragment = new EmpDetailFragment();
@@ -77,9 +77,14 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
 
         saveChangesBtn = v.findViewById(R.id.m_save_button);
         saveChangesBtn.setEnabled(false);
+        saveChangesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Changes are applied",Toast.LENGTH_SHORT).show();
+//                mDetailAdapter.notifyDataSetChanged();
+            }
+        });
 
-        backBtn = v.findViewById(R.id.back_button_detail);
-        final Fragment me = this;
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +92,6 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
             }
         });
 
-        newSkill = v.findViewById(R.id.m_skill_input);
 
         addSkill = v.findViewById(R.id.add_skill_detail);
         final AddSkillAlertDialog skillAddDialog = new AddSkillAlertDialog(this);
@@ -114,8 +118,8 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
     }
 
     @Override
-    public void positiveClick(DialogFragment dialog,String skillName,int skillRate) {
-        card.getM_emp_skills().add(new Pair<>(skillRate, skillName));
+    public void positiveClick(String skillName) {
+        card.getM_emp_skills().add(new Pair<>(1, skillName));
         mDetailAdapter.notifyDataSetChanged();
     }
 

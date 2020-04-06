@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#424242"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selected skill will be deleted."
+        android:fontFamily="@font/muli_bold"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@android:color/white"
+        android:layout_marginHorizontal="16dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete?"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/muli_regular"
+        android:layout_marginHorizontal="16dp"
+        android:textSize="16sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp">
+        <TextView
+            android:id="@+id/close_btn_dialog_rem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:textColor="@color/colorDarkYellow"
+            android:fontFamily="@font/muli_regular"
+            android:textSize="16sp"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="32dp"/>
+        <TextView
+            android:id="@+id/ok_btn_dialog_rem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textColor="@color/colorDarkYellow"
+            android:fontFamily="@font/muli_regular"
+            android:textSize="16sp"
+            android:layout_gravity="end"/>
+    </LinearLayout>
+</LinearLayout>

@@ -10,44 +10,62 @@
         android:layout_height="wrap_content"
         android:text="New Skill"
         android:fontFamily="@font/muli_bold"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:layout_marginVertical="8dp"
         android:textColor="@android:color/white"
-        android:gravity="center"
-        />
+        android:gravity="center" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please name and rate your skill"
+        android:text="Please name your skill"
         android:textColor="@android:color/white"
         android:fontFamily="@font/muli_regular"
         android:layout_marginBottom="8dp"
-        android:textSize="14sp"
-        android:gravity="center"
-        />
+        android:textSize="16sp"
+        android:gravity="center" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextLabel">
+            <EditText
+                android:id="@+id/m_skill_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="text"
+                android:textColor="@android:color/white"
+                android:textColorHighlight="@color/colorGray"
+                android:fontFamily="@font/muli_regular"
+                android:textSize="16sp"
+                android:hint="Skill Name"
+                android:textColorHint="@android:color/white"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginVertical="8dp">
-        <EditText
-            android:id="@+id/m_skill_input"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="6"
-            android:inputType="text"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/colorDarkYellow"
-            android:layout_marginHorizontal="16dp"
-            android:fontFamily="@font/muli_regular"
-            android:textSize="14sp"
-            android:hint="Enter a skill name"/>
-        <NumberPicker
-            android:id="@+id/m_rate_picker"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="4dp"
-            android:theme="@style/AppTheme.Picker"/>
+        android:gravity="end"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginVertical="16dp">
+    <TextView
+        android:id="@+id/close_btn_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/muli_regular"
+        android:textSize="16sp"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="32dp"/>
+    <TextView
+        android:id="@+id/add_btn_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/muli_regular"
+        android:textSize="16sp"
+        android:layout_gravity="end"/>
     </LinearLayout>
 </LinearLayout>
