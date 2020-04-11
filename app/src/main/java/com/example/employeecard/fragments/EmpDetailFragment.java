@@ -122,7 +122,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
                                 Log.e("EmpDetailFragmnt", "Left to right");
                                 getActivity().getSupportFragmentManager().popBackStack();
                             }
-                            }
+
                         }catch (Exception e) {
                             // nothing
                         }
