@@ -39,24 +39,20 @@ public class AddSkillAlertDialog extends DialogFragment {
         addBtn = view.findViewById(R.id.add_btn_dialog);
         cancelBtn = view.findViewById(R.id.close_btn_dialog);
         textInput = view.findViewById(R.id.text_input);
-
+        addBtn.setEnabled(false);
         builder.setView(view);
+
+
+
+//        if (!(skillNameStr.equals(""))) {
+//            addBtn.setEnabled(true);
+//        }
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String skillNameStr = skillName.getText().toString();
-                if (skillNameStr.equals("")) {
-                    textInput.setErrorEnabled(true);
-                    textInput.setError("This field cannot be blank");
-                }
-                else {
-//                    textInput.setErrorEnabled(true);
-//                    textInput.setError("This field cannot be blank");
-//                   skillName.setError("This field cannot be blank");
-                    textInput.setError(null);
                     mListener.positiveClick(skillNameStr);
                     AddSkillAlertDialog.this.dismiss();
-                }
 
             }
         });
@@ -64,6 +60,26 @@ public class AddSkillAlertDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 AddSkillAlertDialog.this.dismiss();
+            }
+        });
+        skillName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().trim().length()==0){
+                    addBtn.setEnabled(false);
+                } else {
+                    addBtn.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 

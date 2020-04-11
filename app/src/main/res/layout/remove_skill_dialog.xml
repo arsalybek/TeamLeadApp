@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="CANCEL"
             android:textColor="@color/colorDarkYellow"
-            android:fontFamily="@font/muli_regular"
+            android:fontFamily="@font/muli_bold"
             android:textSize="16sp"
             android:layout_gravity="end"
             android:layout_marginHorizontal="32dp"/>
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="OK"
             android:textColor="@color/colorDarkYellow"
-            android:fontFamily="@font/muli_regular"
+            android:fontFamily="@font/muli_bold"
             android:textSize="16sp"
             android:layout_gravity="end"/>
     </LinearLayout>
