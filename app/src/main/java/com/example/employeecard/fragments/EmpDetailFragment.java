@@ -42,7 +42,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
     private EmpDetailAdapter mDetailAdapter;
     private Button saveChangesBtn;
     private LinearLayout layout;
-    private NestedScrollView nestedView;
+    private DetailScrollView scrollView;
     public static EmpDetailFragment newInstance(CardData card) {
         EmpDetailFragment fragment = new EmpDetailFragment();
         fragment.card = card;
@@ -81,8 +81,9 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         mPhone = v.findViewById(R.id.m_phone_detail);
         mPhone.setText(card.getEmpDetail().getEmp_tel_number());
 
-//        layout = v.findViewById(R.id.first_div);
-//        nestedView = v.findViewById(R.id.nested_scroll_view);
+
+       scrollView = v.findViewById(R.id.nested_scroll_view);
+
 
         saveChangesBtn = v.findViewById(R.id.m_save_button);
         saveChangesBtn.setEnabled(false);
@@ -129,13 +130,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
                 });
-
-        v.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return gesture.onTouchEvent(event);
-            }
-        });
+        scrollView.setDetector(gesture);
 
         addSkill = v.findViewById(R.id.add_skill_detail);
         final AddSkillAlertDialog skillAddDialog = new AddSkillAlertDialog(this);
