@@ -1,11 +1,18 @@
 package com.example.employeecard.models;
 
-
 import androidx.core.util.Pair;
 
 import java.util.List;
 
-public class CardData {
+public class EmployeeInfo {
+    public static final String TABLE_EMPLOYEE = "employee_info";
+
+    public static final String EMP_ID = "m_emp_id";
+    public static final String EMP_FIO = "m_emp_fio";
+    public static final String EMP_POSITION = "m_emp_position";
+    public static final String EMP_AVATAR = "m_emp_img";
+
+    private int m_emp_id;
 
     private int m_emp_img;
     private int m_emp_img_border;
@@ -15,7 +22,16 @@ public class CardData {
     private List<Pair<Integer,String>> m_emp_skills;
     private EmpDetail mEmpDetail;
 
-    public CardData(int m_emp_img,int m_emp_img_border,int m_emp_card_back, String m_emp_fio, String m_emp_position, List<Pair<Integer, String>> m_emp_skills) {
+    public EmployeeInfo(){}
+    public EmployeeInfo(int id, int avatar, String fio, String position) {
+        this.m_emp_id = id;
+        this.m_emp_img = avatar;
+        this.m_emp_fio = fio;
+        this.m_emp_position = position;
+    }
+
+
+    public EmployeeInfo(int m_emp_img, int m_emp_img_border, int m_emp_card_back, String m_emp_fio, String m_emp_position, List<Pair<Integer, String>> m_emp_skills) {
         this.m_emp_img = m_emp_img;
         this.m_emp_img_border = m_emp_img_border;
         this.m_emp_card_back = m_emp_card_back;
@@ -77,5 +93,13 @@ public class CardData {
 
     public void setEmpDetail(EmpDetail empDetail) {
         mEmpDetail = empDetail;
+    }
+
+    public int getM_emp_id() {
+        return m_emp_id;
+    }
+
+    public void setM_emp_id(int m_emp_id) {
+        this.m_emp_id = m_emp_id;
     }
 }

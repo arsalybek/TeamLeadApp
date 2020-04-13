@@ -75,7 +75,8 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
 
     @Override
     public int getItemCount() {
-        return mSkillList.size();
+//        return mSkillList.size();
+        return 0;
     }
 
     @Override

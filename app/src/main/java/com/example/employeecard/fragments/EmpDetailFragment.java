@@ -11,30 +11,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.widget.NestedScrollView;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.IChange;
-import com.example.employeecard.IntervalConverter;
 import com.example.employeecard.R;
 import com.example.employeecard.AddSkillDialogListener;
 import com.example.employeecard.adapters.EmpDetailAdapter;
-import com.example.employeecard.models.CardData;
+import com.example.employeecard.models.EmployeeInfo;
 
 import org.jetbrains.annotations.NotNull;
 
 public class EmpDetailFragment extends Fragment implements IChange, AddSkillDialogListener {
-    private CardData card;
+    private EmployeeInfo card;
     private ImageView mAvatar;
     private TextView mName, mPos, mExp, mAge, mEmail, mPhone,addSkill;
     private ImageButton backBtn;
@@ -43,7 +39,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
     private Button saveChangesBtn;
     private LinearLayout layout;
     private DetailScrollView scrollView;
-    public static EmpDetailFragment newInstance(CardData card) {
+    public static EmpDetailFragment newInstance(EmployeeInfo card) {
         EmpDetailFragment fragment = new EmpDetailFragment();
         fragment.card = card;
         return fragment;
@@ -70,16 +66,16 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         mPos.setText(card.getM_emp_position().toUpperCase());
 
         mExp = v.findViewById(R.id.m_exp_detail);
-        mExp.setText(IntervalConverter.getWorkExp(card.getEmpDetail().getEmp_work_start()));
+//        mExp.setText(IntervalConverter.getWorkExp(card.getEmpDetail().getEmp_work_start()));
 
         mAge = v.findViewById(R.id.m_age_detail);
-        mAge.setText(String.valueOf(card.getEmpDetail().getM_emp_age()));
+//        mAge.setText(String.valueOf(card.getEmpDetail().getM_emp_age()));
 
         mEmail = v.findViewById(R.id.m_email_detail);
-        mEmail.setText(card.getEmpDetail().getM_emp_email());
+//        mEmail.setText(card.getEmpDetail().getM_emp_email());
 
         mPhone = v.findViewById(R.id.m_phone_detail);
-        mPhone.setText(card.getEmpDetail().getEmp_tel_number());
+//        mPhone.setText(card.getEmpDetail().getEmp_tel_number());
 
 
        scrollView = v.findViewById(R.id.nested_scroll_view);

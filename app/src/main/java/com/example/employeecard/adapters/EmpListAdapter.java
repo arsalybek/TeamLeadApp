@@ -1,7 +1,5 @@
 package com.example.employeecard.adapters;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,22 +7,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.fragments.EmpDetailFragment;
-import com.example.employeecard.models.CardData;
+import com.example.employeecard.models.EmployeeInfo;
 
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListHolder> {
-    private List<CardData> mCardDataList;
-    public EmpListAdapter(List<CardData> mCardDataList){
-        this.mCardDataList = mCardDataList;
+    private List<EmployeeInfo> mEmployeeInfoList;
+    public EmpListAdapter(List<EmployeeInfo> mEmployeeInfoList){
+        this.mEmployeeInfoList = mEmployeeInfoList;
     }
     @NonNull
     @Override
@@ -34,23 +31,23 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
     }
     @Override
     public void onBindViewHolder(@NonNull EmpListHolder holder, int i) {
-        final CardData cardData = mCardDataList.get(i);
-        holder.avatar.setBorderColor(cardData.getM_emp_img_border());
-        holder.avatar.setImageResource(cardData.getM_emp_img());
-        holder.linearLayout.setBackgroundResource(cardData.getM_emp_card_back());
-        holder.nameSur.setText(cardData.getM_emp_fio());
-        holder.position.setText(cardData.getM_emp_position());
-        holder.levelRateOne.setText(String.valueOf(cardData.getM_emp_skills().get(0).first));
-        holder.levelRateTwo.setText(String.valueOf(cardData.getM_emp_skills().get(1).first));
-        holder.levelRateThree.setText(String.valueOf(cardData.getM_emp_skills().get(2).first));
-        holder.skillOne.setText(cardData.getM_emp_skills().get(0).second);
-        holder.skillTwo.setText(cardData.getM_emp_skills().get(1).second);
-        holder.skillThree.setText(cardData.getM_emp_skills().get(2).second);
+        final EmployeeInfo employeeInfo = mEmployeeInfoList.get(i);
+        holder.avatar.setBorderColor(employeeInfo.getM_emp_img_border());
+        holder.avatar.setImageResource(employeeInfo.getM_emp_img());
+        holder.linearLayout.setBackgroundResource(employeeInfo.getM_emp_card_back());
+        holder.nameSur.setText(employeeInfo.getM_emp_fio());
+        holder.position.setText(employeeInfo.getM_emp_position());
+//        holder.levelRateOne.setText(String.valueOf(cardData.getM_emp_skills().get(0).first));
+//        holder.levelRateTwo.setText(String.valueOf(cardData.getM_emp_skills().get(1).first));
+//        holder.levelRateThree.setText(String.valueOf(cardData.getM_emp_skills().get(2).first));
+//        holder.skillOne.setText(cardData.getM_emp_skills().get(0).second);
+//        holder.skillTwo.setText(cardData.getM_emp_skills().get(1).second);
+//        holder.skillThree.setText(cardData.getM_emp_skills().get(2).second);
 
         holder.curView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EmpDetailFragment empDetailFragment = EmpDetailFragment.newInstance(cardData);
+                EmpDetailFragment empDetailFragment = EmpDetailFragment.newInstance(employeeInfo);
                 MainActivity.fm.beginTransaction().replace(R.id.fragment_container,empDetailFragment).addToBackStack(null).commit();
             }
         });
@@ -58,7 +55,7 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
 
     @Override
     public int getItemCount() {
-        return mCardDataList.size();
+        return mEmployeeInfoList.size();
     }
 
     static class EmpListHolder extends RecyclerView.ViewHolder {
