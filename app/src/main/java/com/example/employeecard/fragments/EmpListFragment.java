@@ -15,6 +15,8 @@ import com.example.employeecard.adapters.EmpListAdapter;
 import com.example.employeecard.database.EmployeeBaseHelper;
 import com.example.employeecard.models.EmployeeInfo;
 import com.example.employeecard.models.EmpContainer;
+import com.example.employeecard.models.EmployeeSkill;
+import com.example.employeecard.models.JoinedInfoSkill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,10 @@ public class EmpListFragment extends Fragment {
 
         db = new EmployeeBaseHelper(getContext());
         db.insertListOfEmployee(mContainer.getDataset());
+
+        db.insertListOfSkill(mContainer.insertSkillstoDb());
+        db.insertListOfJoined(mContainer.insertJoinDb());
+
         list.addAll(db.getAllNotes());
         EmpListAdapter adapter = new EmpListAdapter(list);
         recyclerView.setAdapter(adapter);
@@ -49,4 +55,7 @@ public class EmpListFragment extends Fragment {
 
         return view;
     }
+
+
+
 }

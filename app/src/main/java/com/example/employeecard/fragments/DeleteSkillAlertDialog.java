@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.util.Pair;
+import android.util.Pair;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.employeecard.DeleteSkillDialogListener;

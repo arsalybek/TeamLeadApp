@@ -1,6 +1,6 @@
 package com.example.employeecard.models;
 
-import androidx.core.util.Pair;
+import android.util.Pair;
 
 import java.util.List;
 
@@ -11,6 +11,15 @@ public class EmployeeInfo {
     public static final String EMP_FIO = "m_emp_fio";
     public static final String EMP_POSITION = "m_emp_position";
     public static final String EMP_AVATAR = "m_emp_img";
+
+    public static final String CREATE_TABLE_EMPLOYEE =
+            "CREATE TABLE " + TABLE_EMPLOYEE + "("
+                    + EMP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + EMP_FIO + " TEXT,"
+                    + EMP_POSITION + " TEXT,"
+                    + EMP_AVATAR + " INTEGER"
+                    + ")";
+
 
     private int m_emp_id;
 
@@ -31,13 +40,13 @@ public class EmployeeInfo {
     }
 
 
-    public EmployeeInfo(int m_emp_img, int m_emp_img_border, int m_emp_card_back, String m_emp_fio, String m_emp_position, List<Pair<Integer, String>> m_emp_skills) {
+    public EmployeeInfo(int id,int m_emp_img, int m_emp_img_border, int m_emp_card_back, String m_emp_fio, String m_emp_position) {
+        this.m_emp_id = id;
         this.m_emp_img = m_emp_img;
         this.m_emp_img_border = m_emp_img_border;
         this.m_emp_card_back = m_emp_card_back;
         this.m_emp_fio = m_emp_fio;
         this.m_emp_position = m_emp_position;
-        this.m_emp_skills = m_emp_skills;
     }
 
     public int getM_emp_img() {

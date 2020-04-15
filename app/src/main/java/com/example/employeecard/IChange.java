@@ -1,8 +1,7 @@
 package com.example.employeecard;
 
-import androidx.core.util.Pair;
+import android.util.Pair;
 
-import com.example.employeecard.adapters.EmpDetailAdapter;
 
 public interface IChange {
     void onRateChanged();

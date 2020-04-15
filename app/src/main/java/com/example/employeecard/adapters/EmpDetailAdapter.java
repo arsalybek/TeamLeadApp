@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.util.Pair;
+import android.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.DeleteSkillDialogListener;
@@ -17,13 +17,14 @@ import com.example.employeecard.IChange;
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.fragments.DeleteSkillAlertDialog;
+import com.example.employeecard.fragments.EmpDetailFragment;
 
 import java.util.List;
 
 public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder> implements DeleteSkillDialogListener {
     public List<Pair<Integer,String>> mSkillList;
     IChange mIChange;
-    public EmpDetailAdapter(){}
+    public EmpDetailAdapter(List<android.util.Pair<Integer, String>> m_emp_skills, EmpDetailFragment mIChange){}
     public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList,IChange mIChange){
         this.mSkillList = mSkillList;
         this.mIChange = mIChange;

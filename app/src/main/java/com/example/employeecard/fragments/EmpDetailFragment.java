@@ -1,7 +1,5 @@
 package com.example.employeecard.fragments;
 
-import androidx.core.util.Pair;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -17,28 +15,30 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.employeecard.AddSkillDialogListener;
 import com.example.employeecard.IChange;
 import com.example.employeecard.R;
-import com.example.employeecard.AddSkillDialogListener;
 import com.example.employeecard.adapters.EmpDetailAdapter;
 import com.example.employeecard.models.EmployeeInfo;
-
+import android.util.Pair;
 import org.jetbrains.annotations.NotNull;
 
 public class EmpDetailFragment extends Fragment implements IChange, AddSkillDialogListener {
     private EmployeeInfo card;
     private ImageView mAvatar;
-    private TextView mName, mPos, mExp, mAge, mEmail, mPhone,addSkill;
+    private TextView mName, mPos, mExp, mAge, mEmail, mPhone, addSkill;
     private ImageButton backBtn;
     private RecyclerView mRecyclerView;
     private EmpDetailAdapter mDetailAdapter;
     private Button saveChangesBtn;
     private LinearLayout layout;
     private DetailScrollView scrollView;
+
     public static EmpDetailFragment newInstance(EmployeeInfo card) {
         EmpDetailFragment fragment = new EmpDetailFragment();
         fragment.card = card;
@@ -78,7 +78,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
 //        mPhone.setText(card.getEmpDetail().getEmp_tel_number());
 
 
-       scrollView = v.findViewById(R.id.nested_scroll_view);
+        scrollView = v.findViewById(R.id.nested_scroll_view);
 
 
         saveChangesBtn = v.findViewById(R.id.m_save_button);
@@ -86,19 +86,10 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Changes are applied",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Changes are applied", Toast.LENGTH_SHORT).show();
 //                mDetailAdapter.notifyDataSetChanged();
             }
         });
-
-//        backBtn = v.findViewById(R.id.back_button_detail);
-//        final Fragment me = this;
-//        backBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getActivity().getSupportFragmentManager().popBackStack();
-//            }
-//        });
         final GestureDetector gesture = new GestureDetector(v.getContext(),
                 new GestureDetector.SimpleOnGestureListener() {
 
@@ -120,8 +111,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
                                 getActivity().getSupportFragmentManager().popBackStack();
                             }
 
-                        }catch (Exception e) {
-                            // nothing
+                        } catch (Exception e) {
                         }
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
@@ -139,6 +129,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
 
         return v;
     }
+
     @Override
     public void onRateChanged() {
         saveChangesBtn.setEnabled(true);

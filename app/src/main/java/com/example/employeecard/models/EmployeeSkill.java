@@ -1,6 +1,17 @@
 package com.example.employeecard.models;
 
 public class EmployeeSkill {
+    public static final String TABLE_SKILL = "skills";
+
+    public static final String SKILL_ID = "skill_id";
+    public static final String SKILL_NAME = "skill_name";
+
+    public static final String CREATE_TABLE_SKILL =
+            "CREATE TABLE " + TABLE_SKILL + "("
+                    + SKILL_ID + " INTEGER,"
+                    + SKILL_NAME + " TEXT"
+                    + ")";
+
     private int skill_id;
     private String skill_name;
 
