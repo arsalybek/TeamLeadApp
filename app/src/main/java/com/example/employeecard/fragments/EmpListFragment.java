@@ -1,5 +1,6 @@
 package com.example.employeecard.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.employeecard.ContextCall;
+import com.example.employeecard.MyApplication;
 import com.example.employeecard.R;
 import com.example.employeecard.adapters.EmpListAdapter;
 import com.example.employeecard.database.EmployeeBaseHelper;
@@ -24,12 +27,11 @@ import java.util.List;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 
-public class EmpListFragment extends Fragment {
-    private EmpContainer mContainer = EmpContainer.get();
-
+public class EmpListFragment extends Fragment implements ContextCall {
     private List<EmployeeInfo> list = new ArrayList<>();
     private EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(getContext());
-
+    private EmpContainer mContainer = EmpContainer.get(db);
+//    MyApplication app = new MyApplication();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,5 +58,10 @@ public class EmpListFragment extends Fragment {
         pagerIndicator.attachToRecyclerView(recyclerView);
 
         return view;
+    }
+
+    @Override
+    public Context getDbContext() {
+        return this.getContext();
     }
 }

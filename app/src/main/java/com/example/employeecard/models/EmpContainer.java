@@ -3,9 +3,12 @@ package com.example.employeecard.models;
 
 import android.util.Pair;
 
+import com.example.employeecard.ContextCall;
+import com.example.employeecard.MyApplication;
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.database.EmployeeBaseHelper;
+import com.example.employeecard.fragments.EmpListFragment;
 
 import org.joda.time.LocalDate;
 
@@ -15,13 +18,12 @@ import java.util.List;
 public class EmpContainer {
     private List<EmployeeInfo> dataset;
     private static EmpContainer empContainer;
-//    EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(new MainActivity().getApplicationContext());
-
-    public static EmpContainer get() {
+    private EmployeeBaseHelper db;
+    public static EmpContainer get(EmployeeBaseHelper db) {
         if (empContainer == null) {
             empContainer = new EmpContainer();
         }
-
+        empContainer.db = db;
         return empContainer;
     }
 
@@ -41,7 +43,7 @@ public class EmpContainer {
         card4.setEmpDetail(empDetail);
 
 
-//        List<Pair<Integer, String>> skillsAndroid = new ArrayList<>(db.getEmployeeSkill(card1.getM_emp_id()));
+        List<Pair<Integer, String>> skillsAndroid = new ArrayList<>(db.getEmployeeSkill(card1.getM_emp_id()));
         card1.setM_emp_skills(skillsAndroid);
 //        skillsAndroid.add(new Pair<>(8,"UI/UX"));
 //        skillsAndroid.add(new Pair<>(5,"Android Core"));

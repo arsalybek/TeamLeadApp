@@ -35,16 +35,19 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "employee_db";
 
     private static EmployeeBaseHelper mInstance = null;
+
     public static EmployeeBaseHelper getInstance(Context context) {
 
         if (mInstance == null) {
-            mInstance = new EmployeeBaseHelper(context.getApplicationContext());
+            mInstance = new EmployeeBaseHelper(context);
         }
         return mInstance;
     }
+
     public EmployeeBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(EmployeeInfo.CREATE_TABLE_EMPLOYEE);
@@ -125,12 +128,12 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<Pair<Integer,String>>getEmployeeSkill(int id){
-        List<Pair<Integer,String>> skillList = new ArrayList<>();
+    public List<Pair<Integer, String>> getEmployeeSkill(int id) {
+        List<Pair<Integer, String>> skillList = new ArrayList<>();
 
-        String selectQuery = "SELECT " +  TABLE_SKILL + "." + SKILL_NAME + ","
+        String selectQuery = "SELECT " + TABLE_SKILL + "." + SKILL_NAME + ","
                 + TABLE_EMP_SKILL + "." + J_SKILL_SCORE + " FROM "
-                + TABLE_EMPLOYEE  + "," +TABLE_SKILL + "," + TABLE_EMP_SKILL + " WHERE " + id + "=" +
+                + TABLE_EMPLOYEE + "," + TABLE_SKILL + "," + TABLE_EMP_SKILL + " WHERE " + id + "=" +
                 TABLE_EMPLOYEE + "." + EMP_ID + " AND " + TABLE_EMPLOYEE + "." + EMP_ID
                 + "=" + TABLE_EMP_SKILL + "." + J_EMP_ID;
 
@@ -141,9 +144,7 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
             do {
                 int pair1 = c.getInt(c.getColumnIndex(JoinedInfoSkill.J_SKILL_SCORE));
                 String pair2 = c.getString(c.getColumnIndex(EmployeeSkill.SKILL_NAME));
-                Log.e("JoinDb",String.valueOf(pair1));
-                Log.e("JoinDb",pair2);
-                Pair<Integer,String> skillPair = new Pair<Integer,String>(pair1,pair2);
+                Pair<Integer, String> skillPair = new Pair<Integer, String>(pair1, pair2);
 
                 skillList.add(skillPair);
             } while (c.moveToNext());
