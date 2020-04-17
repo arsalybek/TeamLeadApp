@@ -28,7 +28,8 @@ public class EmpListFragment extends Fragment {
     private EmpContainer mContainer = EmpContainer.get();
 
     private List<EmployeeInfo> list = new ArrayList<>();
-    private EmployeeBaseHelper db;
+    private EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(getContext());
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,11 +40,12 @@ public class EmpListFragment extends Fragment {
 //        final EmpListAdapter adapter = new EmpListAdapter(mContainer.getDataset());
 //        recyclerView.setAdapter(adapter);
 
-        db = new EmployeeBaseHelper(getContext());
         db.insertListOfEmployee(mContainer.getDataset());
 
         db.insertListOfSkill(mContainer.insertSkillstoDb());
         db.insertListOfJoined(mContainer.insertJoinDb());
+
+
 
         list.addAll(db.getAllNotes());
         EmpListAdapter adapter = new EmpListAdapter(list);
@@ -55,7 +57,4 @@ public class EmpListFragment extends Fragment {
 
         return view;
     }
-
-
-
 }

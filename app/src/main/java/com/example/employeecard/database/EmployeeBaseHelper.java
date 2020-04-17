@@ -3,16 +3,20 @@ package com.example.employeecard.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.employeecard.models.EmployeeInfo;
 import com.example.employeecard.models.EmployeeSkill;
 import com.example.employeecard.models.JoinedInfoSkill;
 
+import java.security.AccessControlContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,20 +25,26 @@ import static com.example.employeecard.models.EmployeeInfo.TABLE_EMPLOYEE;
 import static com.example.employeecard.models.EmployeeSkill.SKILL_NAME;
 import static com.example.employeecard.models.EmployeeSkill.TABLE_SKILL;
 import static com.example.employeecard.models.JoinedInfoSkill.*;
-import static com.example.employeecard.models.JoinedInfoSkill.JOINED_ID;
 import static com.example.employeecard.models.JoinedInfoSkill.J_EMP_ID;
 import static com.example.employeecard.models.JoinedInfoSkill.J_SKILL_SCORE;
 import static com.example.employeecard.models.JoinedInfoSkill.TABLE_EMP_SKILL;
 
 
 public class EmployeeBaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String DATABASE_NAME = "employee_db";
 
+    private static EmployeeBaseHelper mInstance = null;
+    public static EmployeeBaseHelper getInstance(Context context) {
+
+        if (mInstance == null) {
+            mInstance = new EmployeeBaseHelper(context.getApplicationContext());
+        }
+        return mInstance;
+    }
     public EmployeeBaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(EmployeeInfo.CREATE_TABLE_EMPLOYEE);
@@ -120,16 +130,19 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
 
         String selectQuery = "SELECT " +  TABLE_SKILL + "." + SKILL_NAME + ","
                 + TABLE_EMP_SKILL + "." + J_SKILL_SCORE + " FROM "
-                + TABLE_EMPLOYEE  + "," +TABLE_SKILL + "," + TABLE_EMP_SKILL + " WHERE " + id
-                + " = " + TABLE_EMP_SKILL + "." + J_EMP_ID;
+                + TABLE_EMPLOYEE  + "," +TABLE_SKILL + "," + TABLE_EMP_SKILL + " WHERE " + id + "=" +
+                TABLE_EMPLOYEE + "." + EMP_ID + " AND " + TABLE_EMPLOYEE + "." + EMP_ID
+                + "=" + TABLE_EMP_SKILL + "." + J_EMP_ID;
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
 
         if (c.moveToFirst()) {
             do {
                 int pair1 = c.getInt(c.getColumnIndex(JoinedInfoSkill.J_SKILL_SCORE));
                 String pair2 = c.getString(c.getColumnIndex(EmployeeSkill.SKILL_NAME));
+                Log.e("JoinDb",String.valueOf(pair1));
+                Log.e("JoinDb",pair2);
                 Pair<Integer,String> skillPair = new Pair<Integer,String>(pair1,pair2);
 
                 skillList.add(skillPair);
