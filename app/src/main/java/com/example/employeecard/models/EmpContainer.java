@@ -57,7 +57,6 @@ public class EmpContainer {
 
     private EmpDetail empDetail = new EmpDetail(new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
-
     public List<EmployeeSkill> insertSkillstoDb() {
         EmployeeSkill s1 = new EmployeeSkill(1, "UI/UX");
         EmployeeSkill s2 = new EmployeeSkill(2, "Android Core");
