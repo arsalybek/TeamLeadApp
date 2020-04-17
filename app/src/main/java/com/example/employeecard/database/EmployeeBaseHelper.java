@@ -113,7 +113,6 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-
         if (cursor.moveToFirst()) {
             do {
                 EmployeeInfo employee = new EmployeeInfo();

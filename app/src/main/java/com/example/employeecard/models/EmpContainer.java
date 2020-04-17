@@ -3,12 +3,8 @@ package com.example.employeecard.models;
 
 import android.util.Pair;
 
-import com.example.employeecard.ContextCall;
-import com.example.employeecard.MyApplication;
 import com.example.employeecard.R;
-import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.database.EmployeeBaseHelper;
-import com.example.employeecard.fragments.EmpListFragment;
 
 import org.joda.time.LocalDate;
 
@@ -43,16 +39,11 @@ public class EmpContainer {
         card4.setEmpDetail(empDetail);
 
 
-        List<Pair<Integer, String>> skillsAndroid = new ArrayList<>(db.getEmployeeSkill(card1.getM_emp_id()));
-        card1.setM_emp_skills(skillsAndroid);
-//        skillsAndroid.add(new Pair<>(8,"UI/UX"));
-//        skillsAndroid.add(new Pair<>(5,"Android Core"));
-//        skillsAndroid.add(new Pair<>(5,"Presentation"));
+//        List<Pair<Integer, String>> skillsAndroid = new ArrayList<>(db.getEmployeeSkill(card1.getM_emp_id()));
+//        card1.setM_emp_skills(skillsAndroid);
+
 //        List<Pair<Integer, String>> skillsIos = new ArrayList<>(db.getEmployeeSkill(card2.getM_emp_id()));
 //        card2.setM_emp_skills(skillsIos);
-//        skillsIos.add(new Pair<>(8,"UI/UX"));
-//        skillsIos.add(new Pair<>(5,"IOS Core"));
-//        skillsIos.add(new Pair<>(5,"Presentation"));
 
         dataset.add(card1);
         dataset.add(card2);

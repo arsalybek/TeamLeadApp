@@ -11,15 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.employeecard.ContextCall;
-import com.example.employeecard.MyApplication;
 import com.example.employeecard.R;
 import com.example.employeecard.adapters.EmpListAdapter;
 import com.example.employeecard.database.EmployeeBaseHelper;
 import com.example.employeecard.models.EmployeeInfo;
-import com.example.employeecard.models.EmpContainer;
-import com.example.employeecard.models.EmployeeSkill;
-import com.example.employeecard.models.JoinedInfoSkill;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +22,9 @@ import java.util.List;
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 
-public class EmpListFragment extends Fragment implements ContextCall {
+public class EmpListFragment extends Fragment {
     private List<EmployeeInfo> list = new ArrayList<>();
     private EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(getContext());
-    private EmpContainer mContainer = EmpContainer.get(db);
-//    MyApplication app = new MyApplication();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,13 +35,6 @@ public class EmpListFragment extends Fragment implements ContextCall {
 //        final EmpListAdapter adapter = new EmpListAdapter(mContainer.getDataset());
 //        recyclerView.setAdapter(adapter);
 
-        db.insertListOfEmployee(mContainer.getDataset());
-
-        db.insertListOfSkill(mContainer.insertSkillstoDb());
-        db.insertListOfJoined(mContainer.insertJoinDb());
-
-
-
         list.addAll(db.getAllNotes());
         EmpListAdapter adapter = new EmpListAdapter(list);
         recyclerView.setAdapter(adapter);
@@ -58,10 +44,5 @@ public class EmpListFragment extends Fragment implements ContextCall {
         pagerIndicator.attachToRecyclerView(recyclerView);
 
         return view;
-    }
-
-    @Override
-    public Context getDbContext() {
-        return this.getContext();
     }
 }

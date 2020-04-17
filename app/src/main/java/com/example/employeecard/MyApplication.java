@@ -1,6 +1,8 @@
 package com.example.employeecard;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
 
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.database.EmployeeBaseHelper;
@@ -11,17 +13,16 @@ import java.util.List;
 
 public class MyApplication extends Application {
 
-    public EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(getApplicationContext());
-    private EmpContainer mContainer = EmpContainer.get(db);
+    public EmployeeBaseHelper db;
+
+    public MyApplication(){ }
     @Override
     public void onCreate() {
         super.onCreate();
+        db = EmployeeBaseHelper.getInstance(getApplicationContext());
+        EmpContainer mContainer = EmpContainer.get(db);
         db.insertListOfEmployee(mContainer.getDataset());
         db.insertListOfSkill(mContainer.insertSkillstoDb());
         db.insertListOfJoined(mContainer.insertJoinDb());
-    }
-
-    public List<EmployeeInfo> getList(){
-        return db.getAllNotes();
     }
 }
