@@ -24,6 +24,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         db = EmployeeBaseHelper.getInstance(getApplicationContext());
+//        db.removeAll();
         db.insertListOfSkill(insertSkillstoDb());
         db.insertListOfJoined(insertJoinDb());
         db.insertListOfEmployee(getDataset());
@@ -50,6 +51,9 @@ public class MyApplication extends Application {
         JoinedInfoSkill j4 = new JoinedInfoSkill(2, 1, 8);
         JoinedInfoSkill j5 = new JoinedInfoSkill(2, 2, 10);
         JoinedInfoSkill j6 = new JoinedInfoSkill(2, 4, 6);
+        JoinedInfoSkill j7 = new JoinedInfoSkill(3, 1, 8);
+        JoinedInfoSkill j8 = new JoinedInfoSkill(3, 2, 10);
+        JoinedInfoSkill j9 = new JoinedInfoSkill(3, 4, 6);
 
         List<JoinedInfoSkill> joinSkills = new ArrayList<>();
         joinSkills.add(j1);
@@ -58,7 +62,9 @@ public class MyApplication extends Application {
         joinSkills.add(j4);
         joinSkills.add(j5);
         joinSkills.add(j6);
-
+        joinSkills.add(j7);
+        joinSkills.add(j8);
+        joinSkills.add(j9);
         return joinSkills;
     }
 
@@ -81,7 +87,7 @@ public class MyApplication extends Application {
         dataset.add(card1);
         dataset.add(card2);
         dataset.add(card3);
-        dataset.add(card4);
+//        dataset.add(card4);
         return dataset;
     }
     private EmpDetail empDetail = new EmpDetail(new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");

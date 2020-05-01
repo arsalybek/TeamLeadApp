@@ -38,7 +38,8 @@ public class EmpListFragment extends Fragment {
         list = new ArrayList<>();
         list.addAll(db.getAllNotes());
         EmpListAdapter adapter = new EmpListAdapter(list);
-        Log.d("EmpListFragment", list.get(0).getM_emp_skills().toString());// return->[Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{8 UI/UX}, Pair{8 UI/UX}, Pair{5 Android Core}..
+        Log.d("EmpListFragment", list.get(0).getM_emp_skills().toString());
+        Log.d("EmpListFragment", list.get(1).getM_emp_skills().toString());// return->[Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{8 UI/UX}, Pair{8 UI/UX}, Pair{5 Android Core}..
 //        setSkills(db,list);
 //        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
@@ -49,6 +50,7 @@ public class EmpListFragment extends Fragment {
 
         return view;
     }
+
 
     private void setSkills(EmployeeBaseHelper db, List<EmployeeInfo> list) {
         int i = 0;

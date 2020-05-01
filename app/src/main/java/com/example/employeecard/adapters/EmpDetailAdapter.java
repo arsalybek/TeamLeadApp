@@ -24,7 +24,6 @@ import java.util.List;
 public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder> implements DeleteSkillDialogListener {
     public List<Pair<Integer,String>> mSkillList;
     IChange mIChange;
-    public EmpDetailAdapter(List<android.util.Pair<Integer, String>> m_emp_skills, EmpDetailFragment mIChange){}
     public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList,IChange mIChange){
         this.mSkillList = mSkillList;
         this.mIChange = mIChange;

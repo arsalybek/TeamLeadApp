@@ -3,35 +3,34 @@ package com.example.employeecard.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.util.Pair;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.employeecard.models.EmployeeInfo;
 import com.example.employeecard.models.EmployeeSkill;
 import com.example.employeecard.models.JoinedInfoSkill;
 
-import java.security.AccessControlContext;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.employeecard.models.EmployeeInfo.EMP_ID;
 import static com.example.employeecard.models.EmployeeInfo.TABLE_EMPLOYEE;
+import static com.example.employeecard.models.EmployeeSkill.SKILL_ID;
 import static com.example.employeecard.models.EmployeeSkill.SKILL_NAME;
 import static com.example.employeecard.models.EmployeeSkill.TABLE_SKILL;
-import static com.example.employeecard.models.JoinedInfoSkill.*;
+import static com.example.employeecard.models.JoinedInfoSkill.CREATE_TABLE_EMP_SKILL;
 import static com.example.employeecard.models.JoinedInfoSkill.J_EMP_ID;
+import static com.example.employeecard.models.JoinedInfoSkill.J_SKILL_ID;
 import static com.example.employeecard.models.JoinedInfoSkill.J_SKILL_SCORE;
 import static com.example.employeecard.models.JoinedInfoSkill.TABLE_EMP_SKILL;
 
 
 public class EmployeeBaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 17;
     private static final String DATABASE_NAME = "employee_db";
 
     private static EmployeeBaseHelper mInstance = null;
@@ -108,7 +107,7 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
     public List<EmployeeInfo> getAllNotes() {
         List<EmployeeInfo> list = new ArrayList<>();
 
-        String selectQuery = "SELECT  * FROM " + TABLE_EMPLOYEE;
+        String selectQuery = "SELECT * FROM " + TABLE_EMPLOYEE;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -119,12 +118,11 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
                 employee.setM_emp_fio(cursor.getString(cursor.getColumnIndex(EmployeeInfo.EMP_FIO)));
                 employee.setM_emp_position(cursor.getString(cursor.getColumnIndex(EmployeeInfo.EMP_POSITION)));
                 employee.setM_emp_img(cursor.getInt(cursor.getColumnIndex(EmployeeInfo.EMP_AVATAR)));
-                employee.setM_emp_skills(getEmployeeSkill(cursor.getColumnIndex(EMP_ID)));
-                Log.d("Database",getEmployeeSkill(cursor.getColumnIndex(EMP_ID)).toString());
+                employee.setM_emp_skills(getEmployeeSkill(cursor.getInt(cursor.getColumnIndex(EMP_ID))));
+                Log.d("TEST",getEmployeeSkill(1).toString()) ;
                 list.add(employee);
             } while (cursor.moveToNext());
         }
-
         db.close();
         return list;
     }
@@ -136,7 +134,8 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
                 + TABLE_EMP_SKILL + "." + J_SKILL_SCORE + " FROM "
                 + TABLE_EMPLOYEE + "," + TABLE_SKILL + "," + TABLE_EMP_SKILL + " WHERE " + id + "=" +
                 TABLE_EMPLOYEE + "." + EMP_ID + " AND " + TABLE_EMPLOYEE + "." + EMP_ID
-                + "=" + TABLE_EMP_SKILL + "." + J_EMP_ID;
+                + "=" + TABLE_EMP_SKILL + "." + J_EMP_ID  + " AND " +
+                TABLE_SKILL + "." + SKILL_ID  + "=" + TABLE_EMP_SKILL + "." + J_SKILL_ID;
 
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -151,5 +150,13 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
         }
         return skillList;
+    }
+
+    public void removeAll()
+    {
+        SQLiteDatabase db = this.getWritableDatabase(); // helper is object extends SQLiteOpenHelper
+        db.delete(TABLE_EMP_SKILL, null, null);
+        db.delete(TABLE_SKILL, null, null);
+        db.delete(TABLE_EMPLOYEE,null,null);
     }
 }

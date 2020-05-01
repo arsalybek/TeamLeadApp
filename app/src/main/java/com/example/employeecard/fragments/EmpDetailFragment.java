@@ -87,7 +87,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Changes are applied", Toast.LENGTH_SHORT).show();
-//                mDetailAdapter.notifyDataSetChanged();
+                mDetailAdapter.notifyDataSetChanged();
             }
         });
         final GestureDetector gesture = new GestureDetector(v.getContext(),
