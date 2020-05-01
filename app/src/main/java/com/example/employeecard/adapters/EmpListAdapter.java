@@ -38,12 +38,12 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
         holder.linearLayout.setBackgroundResource(employeeInfo.getM_emp_card_back());
         holder.nameSur.setText(employeeInfo.getM_emp_fio());
         holder.position.setText(employeeInfo.getM_emp_position());
-//        holder.levelRateOne.setText(String.valueOf(employeeInfo.getM_emp_skills().get(0).first));
-//        holder.levelRateTwo.setText(String.valueOf(employeeInfo.getM_emp_skills().get(1).first));
-//        holder.levelRateThree.setText(String.valueOf(employeeInfo.getM_emp_skills().get(2).first));
-//        holder.skillOne.setText(employeeInfo.getM_emp_skills().get(0).second);
-//        holder.skillTwo.setText(employeeInfo.getM_emp_skills().get(1).second);
-//        holder.skillThree.setText(employeeInfo.getM_emp_skills().get(2).second);
+        holder.levelRateOne.setText(String.valueOf(employeeInfo.getM_emp_skills().get(0).first));
+        holder.levelRateTwo.setText(String.valueOf(employeeInfo.getM_emp_skills().get(1).first));
+        holder.levelRateThree.setText(String.valueOf(employeeInfo.getM_emp_skills().get(2).first));
+        holder.skillOne.setText(employeeInfo.getM_emp_skills().get(0).second);
+        holder.skillTwo.setText(employeeInfo.getM_emp_skills().get(1).second);
+        holder.skillThree.setText(employeeInfo.getM_emp_skills().get(2).second);
 
         holder.curView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,7 +31,7 @@ import static com.example.employeecard.models.JoinedInfoSkill.TABLE_EMP_SKILL;
 
 
 public class EmployeeBaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 10;
     private static final String DATABASE_NAME = "employee_db";
 
     private static EmployeeBaseHelper mInstance = null;
@@ -119,6 +119,8 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
                 employee.setM_emp_fio(cursor.getString(cursor.getColumnIndex(EmployeeInfo.EMP_FIO)));
                 employee.setM_emp_position(cursor.getString(cursor.getColumnIndex(EmployeeInfo.EMP_POSITION)));
                 employee.setM_emp_img(cursor.getInt(cursor.getColumnIndex(EmployeeInfo.EMP_AVATAR)));
+                employee.setM_emp_skills(getEmployeeSkill(cursor.getColumnIndex(EMP_ID)));
+                Log.d("Database",getEmployeeSkill(cursor.getColumnIndex(EMP_ID)).toString());
                 list.add(employee);
             } while (cursor.moveToNext());
         }

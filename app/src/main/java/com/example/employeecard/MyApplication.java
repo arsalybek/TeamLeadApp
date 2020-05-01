@@ -1,6 +1,7 @@
 package com.example.employeecard;
 
 import android.app.Application;
+import android.os.Handler;
 import android.util.Pair;
 
 import com.example.employeecard.database.EmployeeBaseHelper;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyApplication extends Application {
-    private List<EmployeeInfo> dataset;
     public EmployeeBaseHelper db;
 
     public MyApplication(){ }
@@ -24,12 +24,10 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         db = EmployeeBaseHelper.getInstance(getApplicationContext());
-        EmpContainer mContainer = EmpContainer.get(db);
-        dataset = getDataset(db);
         db.insertListOfSkill(insertSkillstoDb());
         db.insertListOfJoined(insertJoinDb());
-        db.insertListOfEmployee(dataset);
-
+        db.insertListOfEmployee(getDataset());
+//        setSkills(db,getDataset());
     }
 
     public List<EmployeeSkill> insertSkillstoDb() {
@@ -64,13 +62,14 @@ public class MyApplication extends Application {
         return joinSkills;
     }
 
-    public List<EmployeeInfo> getDataset(EmployeeBaseHelper db) {
+    public List<EmployeeInfo> getDataset() {
+
         List<EmployeeInfo> dataset = new ArrayList<>();
 
-        EmployeeInfo card1 = new EmployeeInfo(1, R.drawable.emp_man_img, R.color.android, R.drawable.card_background_android, "Patrick Johannes", "Rank 3 Android Developer");
+        final EmployeeInfo card1 = new EmployeeInfo(1, R.drawable.emp_man_img, R.color.android, R.drawable.card_background_android, "Patrick Johannes", "Rank 3 Android Developer");
         card1.setEmpDetail(empDetail);
 
-        EmployeeInfo card2 = new EmployeeInfo(2, R.drawable.emp_woman_img2, R.color.ios, R.drawable.card_backround_ios, "Veronika Zhangalova ", "Rank 5 IOS Developer");
+        final EmployeeInfo card2 = new EmployeeInfo(2, R.drawable.emp_woman_img2, R.color.ios, R.drawable.card_backround_ios, "Veronika Zhangalova ", "Rank 5 IOS Developer");
         card2.setEmpDetail(empDetail);
 
         EmployeeInfo card3 = new EmployeeInfo(3, R.drawable.emp_man_img, R.color.front, R.drawable.card_background_front, "Samuel George Claflin", "Rank 4 Front End Developer");
@@ -78,13 +77,6 @@ public class MyApplication extends Application {
 
         EmployeeInfo card4 = new EmployeeInfo(4, R.drawable.emp_woman_img2, R.color.back, R.drawable.card_background_back, "Farida Agzamova", "Rank 5 Back End Developer");
         card4.setEmpDetail(empDetail);
-
-
-        List<Pair<Integer, String>> skillsAndroid = new ArrayList<>(db.getEmployeeSkill(card1.getM_emp_id()));
-        card1.setM_emp_skills(skillsAndroid);
-
-        List<Pair<Integer, String>> skillsIos = new ArrayList<>(db.getEmployeeSkill(card2.getM_emp_id()));
-        card2.setM_emp_skills(skillsIos);
 
         dataset.add(card1);
         dataset.add(card2);
@@ -94,4 +86,12 @@ public class MyApplication extends Application {
     }
     private EmpDetail empDetail = new EmpDetail(new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
+    public void setSkills(EmployeeBaseHelper db, List<EmployeeInfo> list) {
+
+        for (EmployeeInfo e : list) {
+            List<Pair<Integer, String>> skillList = new ArrayList<>(db.getEmployeeSkill(e.getM_emp_id()));
+            e.setM_emp_skills(skillList);
+
+        }
+    }
 }

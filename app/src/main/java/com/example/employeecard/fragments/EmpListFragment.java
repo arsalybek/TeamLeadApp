@@ -2,6 +2,8 @@ package com.example.employeecard.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,7 @@ import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 
 public class EmpListFragment extends Fragment {
-    private List<EmployeeInfo> list = new ArrayList<>();
+    private List<EmployeeInfo> list;
     private EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(getContext());
 
     @Override
@@ -32,11 +34,13 @@ public class EmpListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_emp_list, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
-//        final EmpListAdapter adapter = new EmpListAdapter(mContainer.getDataset());
-//        recyclerView.setAdapter(adapter);
 
+        list = new ArrayList<>();
         list.addAll(db.getAllNotes());
         EmpListAdapter adapter = new EmpListAdapter(list);
+        Log.d("EmpListFragment", list.get(0).getM_emp_skills().toString());// return->[Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{5 UI/UX}, Pair{8 UI/UX}, Pair{8 UI/UX}, Pair{5 Android Core}..
+//        setSkills(db,list);
+//        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
         new LinearSnapHelper().attachToRecyclerView(recyclerView);
@@ -44,5 +48,13 @@ public class EmpListFragment extends Fragment {
         pagerIndicator.attachToRecyclerView(recyclerView);
 
         return view;
+    }
+
+    private void setSkills(EmployeeBaseHelper db, List<EmployeeInfo> list) {
+        int i = 0;
+        for (EmployeeInfo e : list) {
+            e.setM_emp_skills(db.getEmployeeSkill(i));
+            i++;
+        }
     }
 }
