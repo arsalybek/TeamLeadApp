@@ -16,16 +16,18 @@ import com.example.employeecard.DeleteSkillDialogListener;
 import com.example.employeecard.IChange;
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
+import com.example.employeecard.database.EmployeeBaseHelper;
 import com.example.employeecard.fragments.DeleteSkillAlertDialog;
 import com.example.employeecard.fragments.EmpDetailFragment;
+import com.example.employeecard.models.Skill;
 
 import java.util.List;
 
 public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpDetailHolder> implements DeleteSkillDialogListener {
-    public List<Pair<Integer,String>> mSkillList;
+    public List<Skill> skillList;
     IChange mIChange;
-    public EmpDetailAdapter(List<Pair<Integer,String>> mSkillList,IChange mIChange){
-        this.mSkillList = mSkillList;
+    public EmpDetailAdapter(List<Skill> skillList,IChange mIChange){
+        this.skillList = skillList;
         this.mIChange = mIChange;
     }
     @NonNull
@@ -36,10 +38,10 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final EmpDetailHolder holder, int i) {
-        final Pair<Integer,String> skill = mSkillList.get(i);
-        holder.skill.setText(skill.second);
-        holder.skillRate.setText(String.valueOf(skill.first));
+    public void onBindViewHolder(@NonNull final EmpDetailHolder holder, final int i) {
+        final Skill skill = skillList.get(i);
+        holder.skill.setText(skill.getSkill_name());
+        holder.skillRate.setText(String.valueOf(skill.getSkill_score()));
 
         holder.incBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +49,10 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                 if(!(holder.skillRate.getText().toString()).equals("10")) {
                     int s = Integer.parseInt(holder.skillRate.getText().toString()) + 1;
                     holder.skillRate.setText(String.valueOf(s));
+                    skill.setSkill_score(s);
+                    mIChange.onSingleScoreChanged(i,s);
                     mIChange.onRateChanged();
                     Log.e("EmpDetailAdapter","true");
-
                 }
             }
         }
@@ -61,6 +64,7 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                 if(!(holder.skillRate.getText().toString()).equals("1")) {
                     int s = Integer.parseInt(holder.skillRate.getText().toString()) - 1;
                     holder.skillRate.setText(String.valueOf(s));
+                    mIChange.onSingleScoreChanged(i,s);
                     mIChange.onRateChanged();
                     Log.e("EmpDetailAdapter","true");
                 }
@@ -75,12 +79,12 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
 
     @Override
     public int getItemCount() {
-        return mSkillList.size();
+        return skillList.size();
     }
 
     @Override
     public void positiveClick(int i) {
-        mIChange.onDecBtnClicked(mSkillList.get(i));
+        mIChange.onDecBtnClicked(skillList.get(i));
     }
 
     public class EmpDetailHolder extends RecyclerView.ViewHolder {

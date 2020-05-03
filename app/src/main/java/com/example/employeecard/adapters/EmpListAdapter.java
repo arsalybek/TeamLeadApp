@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.employeecard.R;
 import com.example.employeecard.activities.MainActivity;
 import com.example.employeecard.fragments.EmpDetailFragment;
-import com.example.employeecard.models.EmployeeInfo;
+import com.example.employeecard.models.Employee;
 
 import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListHolder> {
-    private List<EmployeeInfo> mEmployeeInfoList;
-    public EmpListAdapter(List<EmployeeInfo> mEmployeeInfoList){
+    private List<Employee> mEmployeeInfoList;
+    public EmpListAdapter(List<Employee> mEmployeeInfoList){
         this.mEmployeeInfoList = mEmployeeInfoList;
     }
     @NonNull
@@ -32,18 +32,18 @@ public class EmpListAdapter extends RecyclerView.Adapter<EmpListAdapter.EmpListH
     @Override
     public void onBindViewHolder(@NonNull EmpListHolder holder, int i) {
 
-        final EmployeeInfo employeeInfo = mEmployeeInfoList.get(i);
-        holder.avatar.setBorderColor(employeeInfo.getM_emp_img_border());
-        holder.avatar.setImageResource(employeeInfo.getM_emp_img());
-        holder.linearLayout.setBackgroundResource(employeeInfo.getM_emp_card_back());
-        holder.nameSur.setText(employeeInfo.getM_emp_fio());
-        holder.position.setText(employeeInfo.getM_emp_position());
-        holder.levelRateOne.setText(String.valueOf(employeeInfo.getM_emp_skills().get(0).first));
-        holder.levelRateTwo.setText(String.valueOf(employeeInfo.getM_emp_skills().get(1).first));
-        holder.levelRateThree.setText(String.valueOf(employeeInfo.getM_emp_skills().get(2).first));
-        holder.skillOne.setText(employeeInfo.getM_emp_skills().get(0).second);
-        holder.skillTwo.setText(employeeInfo.getM_emp_skills().get(1).second);
-        holder.skillThree.setText(employeeInfo.getM_emp_skills().get(2).second);
+        final Employee employeeInfo = mEmployeeInfoList.get(i);
+        holder.avatar.setBorderColor(employeeInfo.getEmp_img_border());
+        holder.avatar.setImageResource(employeeInfo.getEmp_img());
+        holder.linearLayout.setBackgroundResource(employeeInfo.getEmp_card_back());
+        holder.nameSur.setText(employeeInfo.getEmp_full_name());
+        holder.position.setText(employeeInfo.getEmp_position());
+        holder.levelRateOne.setText(String.valueOf(employeeInfo.getEmp_skills().get(0).getSkill_score()));
+        holder.levelRateTwo.setText(String.valueOf(employeeInfo.getEmp_skills().get(1).getSkill_score()));
+        holder.levelRateThree.setText(String.valueOf(employeeInfo.getEmp_skills().get(2).getSkill_score()));
+        holder.skillOne.setText(employeeInfo.getEmp_skills().get(0).getSkill_name());
+        holder.skillTwo.setText(employeeInfo.getEmp_skills().get(1).getSkill_name());
+        holder.skillThree.setText(employeeInfo.getEmp_skills().get(2).getSkill_name());
 
         holder.curView.setOnClickListener(new View.OnClickListener() {
             @Override

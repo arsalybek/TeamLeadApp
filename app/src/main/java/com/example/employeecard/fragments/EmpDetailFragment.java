@@ -11,10 +11,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,24 +20,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.employeecard.AddSkillDialogListener;
 import com.example.employeecard.IChange;
+import com.example.employeecard.IntervalConverter;
 import com.example.employeecard.R;
 import com.example.employeecard.adapters.EmpDetailAdapter;
-import com.example.employeecard.models.EmployeeInfo;
-import android.util.Pair;
+import com.example.employeecard.database.EmployeeBaseHelper;
+import com.example.employeecard.models.Employee;
+import com.example.employeecard.models.Skill;
+
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmpDetailFragment extends Fragment implements IChange, AddSkillDialogListener {
-    private EmployeeInfo card;
+    private Employee card;
     private ImageView mAvatar;
     private TextView mName, mPos, mExp, mAge, mEmail, mPhone, addSkill;
     private ImageButton backBtn;
     private RecyclerView mRecyclerView;
     private EmpDetailAdapter mDetailAdapter;
     private Button saveChangesBtn;
-    private LinearLayout layout;
     private DetailScrollView scrollView;
 
-    public static EmpDetailFragment newInstance(EmployeeInfo card) {
+    private List<Skill> skillList = new ArrayList<>();
+    private List<Employee> employeeList = new ArrayList<>();
+
+    private EmployeeBaseHelper db = EmployeeBaseHelper.getInstance(getContext());
+
+    public static EmpDetailFragment newInstance(Employee card) {
         EmpDetailFragment fragment = new EmpDetailFragment();
         fragment.card = card;
         return fragment;
@@ -53,29 +61,29 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         mRecyclerView = v.findViewById(R.id.m_recycler_detail);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mDetailAdapter = new EmpDetailAdapter(card.getM_emp_skills(), this);
+        mDetailAdapter = new EmpDetailAdapter(card.getEmp_skills(), this);
         mRecyclerView.setAdapter(mDetailAdapter);
 
         mAvatar = v.findViewById(R.id.m_avatar_detail);
-        mAvatar.setImageResource(card.getM_emp_img());
+        mAvatar.setImageResource(card.getEmp_img());
 
         mName = v.findViewById(R.id.m_name_detail);
-        mName.setText(card.getM_emp_fio().toUpperCase());
+        mName.setText(card.getEmp_full_name().toUpperCase());
 
         mPos = v.findViewById(R.id.m_position_detail);
-        mPos.setText(card.getM_emp_position().toUpperCase());
+        mPos.setText(card.getEmp_position().toUpperCase());
 
         mExp = v.findViewById(R.id.m_exp_detail);
-//        mExp.setText(IntervalConverter.getWorkExp(card.getEmpDetail().getEmp_work_start()));
+        mExp.setText(IntervalConverter.getWorkExp(card.getEmp_work_start()));
 
         mAge = v.findViewById(R.id.m_age_detail);
-//        mAge.setText(String.valueOf(card.getEmpDetail().getM_emp_age()));
+        mAge.setText(String.valueOf(card.getEmp_age()));
 
         mEmail = v.findViewById(R.id.m_email_detail);
-//        mEmail.setText(card.getEmpDetail().getM_emp_email());
+        mEmail.setText(card.getEmp_email());
 
         mPhone = v.findViewById(R.id.m_phone_detail);
-//        mPhone.setText(card.getEmpDetail().getEmp_tel_number());
+        mPhone.setText(card.getEmp_tel_number());
 
 
         scrollView = v.findViewById(R.id.nested_scroll_view);
@@ -86,8 +94,17 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Changes are applied", Toast.LENGTH_SHORT).show();
+//                skillList.addAll(db.getAllSkills());
+//                for( Skill s : card.getEmp_skills()){
+//                    for(Skill s1: skillList){
+//                        if(s.getSkill_name().equals(s1.getSkill_name())) {
+//                            db.updateSkillScore(card.getEmp_id(), s1.getSkill_id(), s.getSkill_score());
+//                        }
+//                    }
+//
+//                }
                 mDetailAdapter.notifyDataSetChanged();
+                Toast.makeText(getContext(), "Changes are applied", Toast.LENGTH_SHORT).show();
             }
         });
         final GestureDetector gesture = new GestureDetector(v.getContext(),
@@ -126,7 +143,8 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
                 skillAddDialog.showNow(getActivity().getSupportFragmentManager(), "dialog");
             }
         });
-
+        skillList.addAll(db.getAllSkills());
+        employeeList.addAll(db.getAllEmployees());
         return v;
     }
 
@@ -138,15 +156,38 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
     }
 
     @Override
-    public void onDecBtnClicked(Pair<Integer, String> skill) {
-        card.getM_emp_skills().remove(skill);
+    public void onDecBtnClicked(Skill skill) {
+        card.getEmp_skills().remove(skill);
+        skillList.addAll(db.getAllSkills());
+        int res = 0;
+        for( Skill s : skillList){
+            if(s.getSkill_name().equals(skill.getSkill_name()))
+                res = s.getSkill_id();
+        }
+        db.deleteSkill(card.getEmp_id(),res);
         mDetailAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void positiveClick(String skillName) {
-        card.getM_emp_skills().add(new Pair<>(1, skillName));
-        mDetailAdapter.notifyDataSetChanged();
+    public void onSingleScoreChanged(int id, int score) {
+        int res = 0;
+        for( Skill s : skillList){
+            if(card.getEmp_skills().get(id).getSkill_name().equals(s.getSkill_name()))
+                res = s.getSkill_id();
+        }
+        db.updateSkillScore(card.getEmp_id(),res,score);
+        Log.d("TEST CARD", String.valueOf(card.getEmp_skills().get(id).getSkill_id()));
     }
 
+    @Override
+    public void positiveClick(String skillName) { ;
+        int cnt=  0;
+        for(Employee e : employeeList){
+            cnt+=e.getEmp_skills().size();
+        }
+        Log.d("Fragment",skillList.toString());
+        db.addSkill(cnt+1,card.getEmp_id(),skillList.size()+1,skillName);
+        card.getEmp_skills().add(new Skill(skillName, 1));
+        mDetailAdapter.notifyDataSetChanged();
+    }
 }

@@ -1,15 +1,12 @@
 package com.example.employeecard;
 
 import android.app.Application;
-import android.os.Handler;
-import android.util.Pair;
+import android.util.Log;
 
 import com.example.employeecard.database.EmployeeBaseHelper;
-import com.example.employeecard.models.EmpContainer;
-import com.example.employeecard.models.EmpDetail;
-import com.example.employeecard.models.EmployeeInfo;
-import com.example.employeecard.models.EmployeeSkill;
-import com.example.employeecard.models.JoinedInfoSkill;
+import com.example.employeecard.models.Employee;
+import com.example.employeecard.models.Joined;
+import com.example.employeecard.models.Skill;
 
 import org.joda.time.LocalDate;
 
@@ -19,24 +16,24 @@ import java.util.List;
 public class MyApplication extends Application {
     public EmployeeBaseHelper db;
 
-    public MyApplication(){ }
+    public MyApplication() {
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         db = EmployeeBaseHelper.getInstance(getApplicationContext());
-//        db.removeAll();
-        db.insertListOfSkill(insertSkillstoDb());
-        db.insertListOfJoined(insertJoinDb());
-        db.insertListOfEmployee(getDataset());
-//        setSkills(db,getDataset());
+//        db.insertListOfSkill(insertSkillsToDb());
+//        db.insertListOfEmployee(insertEmployeeToDb());
+//        db.insertListOfJoined(insertJoinedToDb());
     }
 
-    public List<EmployeeSkill> insertSkillstoDb() {
-        EmployeeSkill s1 = new EmployeeSkill(1, "UI/UX");
-        EmployeeSkill s2 = new EmployeeSkill(2, "Android Core");
-        EmployeeSkill s3 = new EmployeeSkill(3, "Presentation");
-        EmployeeSkill s4 = new EmployeeSkill(4, "IOS Core");
-        List<EmployeeSkill> skillList = new ArrayList<>();
+    public List<Skill> insertSkillsToDb() {
+        Skill s1 = new Skill(1,"UI/UX");
+        Skill s2 = new Skill(2,"Android Core");
+        Skill s3 = new Skill(3, "Presentation");
+        Skill s4 = new Skill(4, "IOS Core");
+        List<Skill> skillList = new ArrayList<>();
         skillList.add(s1);
         skillList.add(s2);
         skillList.add(s3);
@@ -44,18 +41,21 @@ public class MyApplication extends Application {
         return skillList;
     }
 
-    public List<JoinedInfoSkill> insertJoinDb() {
-        JoinedInfoSkill j1 = new JoinedInfoSkill(1, 1, 8);
-        JoinedInfoSkill j2 = new JoinedInfoSkill(1, 2, 5);
-        JoinedInfoSkill j3 = new JoinedInfoSkill(1, 3, 5);
-        JoinedInfoSkill j4 = new JoinedInfoSkill(2, 1, 8);
-        JoinedInfoSkill j5 = new JoinedInfoSkill(2, 2, 10);
-        JoinedInfoSkill j6 = new JoinedInfoSkill(2, 4, 6);
-        JoinedInfoSkill j7 = new JoinedInfoSkill(3, 1, 8);
-        JoinedInfoSkill j8 = new JoinedInfoSkill(3, 2, 10);
-        JoinedInfoSkill j9 = new JoinedInfoSkill(3, 4, 6);
+    public List<Joined> insertJoinedToDb() {
+        Joined j1 = new Joined(1,1, 1, 8);
+        Joined j2 = new Joined(2,1, 2, 5);
+        Joined j3 = new Joined(3,1, 3, 5);
+        Joined j4 = new Joined(4,2, 1, 8);
+        Joined j5 = new Joined(5,2, 2, 10);
+        Joined j6 = new Joined(6,2, 4, 6);
+        Joined j7 = new Joined(7,3, 1, 8);
+        Joined j8 = new Joined(8,3, 2, 10);
+        Joined j9 = new Joined(9,3, 4, 6);
+        Joined j10 = new Joined(10,4, 1, 8);
+        Joined j11 = new Joined(11,4, 2, 10);
+        Joined j12 = new Joined(12,4, 4, 6);
 
-        List<JoinedInfoSkill> joinSkills = new ArrayList<>();
+        List<Joined> joinSkills = new ArrayList<>();
         joinSkills.add(j1);
         joinSkills.add(j2);
         joinSkills.add(j3);
@@ -65,39 +65,33 @@ public class MyApplication extends Application {
         joinSkills.add(j7);
         joinSkills.add(j8);
         joinSkills.add(j9);
+        joinSkills.add(j10);
+        joinSkills.add(j11);
+        joinSkills.add(j12);
         return joinSkills;
     }
 
-    public List<EmployeeInfo> getDataset() {
+    public List<Employee> insertEmployeeToDb() {
 
-        List<EmployeeInfo> dataset = new ArrayList<>();
+        List<Employee> employeeList = new ArrayList<>();
 
-        final EmployeeInfo card1 = new EmployeeInfo(1, R.drawable.emp_man_img, R.color.android, R.drawable.card_background_android, "Patrick Johannes", "Rank 3 Android Developer");
-        card1.setEmpDetail(empDetail);
+        final Employee card1 = new Employee(1, "Patrick Johannes", "Rank 3 Android Developer", R.drawable.emp_man_img, R.color.android, R.drawable.card_background_android,
+                new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
-        final EmployeeInfo card2 = new EmployeeInfo(2, R.drawable.emp_woman_img2, R.color.ios, R.drawable.card_backround_ios, "Veronika Zhangalova ", "Rank 5 IOS Developer");
-        card2.setEmpDetail(empDetail);
+        final Employee card2 = new Employee(2, "Veronika Zhangalova ", "Rank 5 IOS Developer", R.drawable.emp_woman_img, R.color.ios, R.drawable.card_backround_ios,
+                new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
-        EmployeeInfo card3 = new EmployeeInfo(3, R.drawable.emp_man_img, R.color.front, R.drawable.card_background_front, "Samuel George Claflin", "Rank 4 Front End Developer");
-        card3.setEmpDetail(empDetail);
+        Employee card3 = new Employee(3, "Samuel George Claflin", "Rank 4 Front End Developer", R.drawable.emp_man_img, R.color.front, R.drawable.card_background_front,
+                new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
-        EmployeeInfo card4 = new EmployeeInfo(4, R.drawable.emp_woman_img2, R.color.back, R.drawable.card_background_back, "Farida Agzamova", "Rank 5 Back End Developer");
-        card4.setEmpDetail(empDetail);
+        Employee card4 = new Employee(4, "Farida Agzamova", "Rank 5 Back End Developer", R.drawable.emp_woman_img, R.color.back, R.drawable.card_background_back,
+                new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
-        dataset.add(card1);
-        dataset.add(card2);
-        dataset.add(card3);
-//        dataset.add(card4);
-        return dataset;
-    }
-    private EmpDetail empDetail = new EmpDetail(new LocalDate(2020, 1, 31), 27, "admin@gmail.com", "+77057851992");
 
-    public void setSkills(EmployeeBaseHelper db, List<EmployeeInfo> list) {
-
-        for (EmployeeInfo e : list) {
-            List<Pair<Integer, String>> skillList = new ArrayList<>(db.getEmployeeSkill(e.getM_emp_id()));
-            e.setM_emp_skills(skillList);
-
-        }
+        employeeList.add(card1);
+        employeeList.add(card2);
+        employeeList.add(card3);
+        employeeList.add(card4);
+        return employeeList;
     }
 }
