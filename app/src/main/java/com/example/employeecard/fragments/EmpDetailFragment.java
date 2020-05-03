@@ -94,15 +94,15 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                skillList.addAll(db.getAllSkills());
-//                for( Skill s : card.getEmp_skills()){
-//                    for(Skill s1: skillList){
-//                        if(s.getSkill_name().equals(s1.getSkill_name())) {
-//                            db.updateSkillScore(card.getEmp_id(), s1.getSkill_id(), s.getSkill_score());
-//                        }
-//                    }
-//
-//                }
+                skillList.addAll(db.getAllSkills());
+                for( Skill s : card.getEmp_skills()){
+                    for(Skill s1: skillList){
+                        if(s.getSkill_name().equals(s1.getSkill_name())) {
+                            db.updateSkillScore(card.getEmp_id(), s1.getSkill_id(), s.getSkill_score());
+                            Log.d("Fragment", String.valueOf(s.getSkill_score()));
+                        }
+                    }
+                }
                 mDetailAdapter.notifyDataSetChanged();
                 Toast.makeText(getContext(), "Changes are applied", Toast.LENGTH_SHORT).show();
             }
@@ -170,13 +170,13 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
 
     @Override
     public void onSingleScoreChanged(int id, int score) {
-        int res = 0;
-        for( Skill s : skillList){
-            if(card.getEmp_skills().get(id).getSkill_name().equals(s.getSkill_name()))
-                res = s.getSkill_id();
-        }
-        db.updateSkillScore(card.getEmp_id(),res,score);
-        Log.d("TEST CARD", String.valueOf(card.getEmp_skills().get(id).getSkill_id()));
+//        int res = 0;
+//        for( Skill s : skillList){
+//            if(card.getEmp_skills().get(id).getSkill_name().equals(s.getSkill_name()))
+//                res = s.getSkill_id();
+//        }
+//        db.updateSkillScore(card.getEmp_id(),res,score);
+//        Log.d("TEST CARD", String.valueOf(card.getEmp_skills().get(id).getSkill_id()));
     }
 
     @Override

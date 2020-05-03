@@ -50,7 +50,7 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                     int s = Integer.parseInt(holder.skillRate.getText().toString()) + 1;
                     holder.skillRate.setText(String.valueOf(s));
                     skill.setSkill_score(s);
-                    mIChange.onSingleScoreChanged(i,s);
+//                    mIChange.onSingleScoreChanged(i,s);
                     mIChange.onRateChanged();
                     Log.e("EmpDetailAdapter","true");
                 }
@@ -64,7 +64,8 @@ public class EmpDetailAdapter extends RecyclerView.Adapter<EmpDetailAdapter.EmpD
                 if(!(holder.skillRate.getText().toString()).equals("1")) {
                     int s = Integer.parseInt(holder.skillRate.getText().toString()) - 1;
                     holder.skillRate.setText(String.valueOf(s));
-                    mIChange.onSingleScoreChanged(i,s);
+                    skill.setSkill_score(s);
+//                    mIChange.onSingleScoreChanged(i,s);
                     mIChange.onRateChanged();
                     Log.e("EmpDetailAdapter","true");
                 }
