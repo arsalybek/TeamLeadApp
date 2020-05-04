@@ -23,9 +23,9 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         db = EmployeeBaseHelper.getInstance(getApplicationContext());
-//        db.insertListOfSkill(insertSkillsToDb());
-//        db.insertListOfEmployee(insertEmployeeToDb());
-//        db.insertListOfJoined(insertJoinedToDb());
+        db.insertListOfSkill(insertSkillsToDb());
+        db.insertListOfEmployee(insertEmployeeToDb());
+        db.insertListOfJoined(insertJoinedToDb());
     }
 
     public List<Skill> insertSkillsToDb() {

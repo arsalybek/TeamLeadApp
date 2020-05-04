@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Paint;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -31,7 +30,7 @@ import static com.example.employeecard.models.Skill.TABLE_SKILL;
 
 
 public class EmployeeBaseHelper extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 37;
+    private static final int DATABASE_VERSION = 38;
     private static final String DATABASE_NAME = "employee_db";
 
     private static EmployeeBaseHelper mInstance = null;
@@ -91,7 +90,7 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
 
         for (int i = 0; i < employeeSkills.size(); i++) {
             values = new ContentValues();
-            values.put(SKILL_ID,employeeSkills.get(i).getSkill_id());
+            values.put(SKILL_ID, employeeSkills.get(i).getSkill_id());
             values.put(Skill.SKILL_NAME, employeeSkills.get(i).getSkill_name());
             db.insert(TABLE_SKILL, null, values);
         }
@@ -104,7 +103,7 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
 
         for (int i = 0; i < joinedInfoSkills.size(); i++) {
             values = new ContentValues();
-            values.put(JOINED_ID,joinedInfoSkills.get(i).getJoin_id());
+            values.put(JOINED_ID, joinedInfoSkills.get(i).getJoin_id());
             values.put(Employee.EMP_ID, joinedInfoSkills.get(i).getEmp_id());
             values.put(Skill.SKILL_ID, joinedInfoSkills.get(i).getSkill_id());
             values.put(J_SKILL_SCORE, joinedInfoSkills.get(i).getSkill_score());
@@ -141,8 +140,8 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public List<Skill> getAllSkills(){
-        List<Skill>skillList = new ArrayList<>();
+    public List<Skill> getAllSkills() {
+        List<Skill> skillList = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_SKILL;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -178,7 +177,7 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
             do {
                 int score = c.getInt(c.getColumnIndex(Joined.J_SKILL_SCORE));
                 String name = c.getString(c.getColumnIndex(Skill.SKILL_NAME));
-                Skill skill = new Skill(name,score);
+                Skill skill = new Skill(name, score);
 
                 skillList.add(skill);
             } while (c.moveToNext());
@@ -193,24 +192,24 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
         db.delete(TABLE_EMPLOYEE, null, null);
     }
 
-    public void updateSkillScore(int emp_id,int skill_id, int score){
-        String updateQuery = "UPDATE " + TABLE_EMP_SKILL + " SET "+
-        J_SKILL_SCORE + "=" + score + " WHERE " +
-                Employee.EMP_ID  + "=" + emp_id + " AND " +  SKILL_ID + "=" + skill_id;
-        Log.d("TEST DB EMP_ID",String.valueOf(emp_id));
+    public void updateSkillScore(int emp_id, int skill_id, int score) {
+        String updateQuery = "UPDATE " + TABLE_EMP_SKILL + " SET " +
+                J_SKILL_SCORE + "=" + score + " WHERE " +
+                Employee.EMP_ID + "=" + emp_id + " AND " + SKILL_ID + "=" + skill_id;
+        Log.d("TEST DB EMP_ID", String.valueOf(emp_id));
         Log.d("TEST DB SKILL_ID", String.valueOf(skill_id));
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(updateQuery);
     }
 
-    public void deleteSkill(int emp_id,int skill_id){
-        String deleteQuery = "DELETE FROM " + TABLE_EMP_SKILL +  " WHERE " +
-                Employee.EMP_ID  + "=" + emp_id + " AND " +  SKILL_ID + "=" + skill_id;
+    public void deleteSkill(int emp_id, int skill_id) {
+        String deleteQuery = "DELETE FROM " + TABLE_EMP_SKILL + " WHERE " +
+                Employee.EMP_ID + "=" + emp_id + " AND " + SKILL_ID + "=" + skill_id;
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(deleteQuery);
     }
 
-    public void  addSkill(int join_id,int emp_id, int skill_id, String skill_name) {
+    public void addSkill(int join_id, int emp_id, int skill_id, String skill_name) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues newSkill = new ContentValues();
@@ -221,13 +220,13 @@ public class EmployeeBaseHelper extends SQLiteOpenHelper {
         Log.d("DB SKILL", String.valueOf(skill_id));
         Log.d("DB SKILL", skill_name);
         ContentValues newJoin = new ContentValues();
-        newJoin.put(JOINED_ID,join_id);
-        newJoin.put(EMP_ID,emp_id);
-        newJoin.put(SKILL_ID,skill_id);
-        newJoin.put(J_SKILL_SCORE,1);
+        newJoin.put(JOINED_ID, join_id);
+        newJoin.put(EMP_ID, emp_id);
+        newJoin.put(SKILL_ID, skill_id);
+        newJoin.put(J_SKILL_SCORE, 1);
         Log.d("DB JOIN", String.valueOf(join_id));
         Log.d("DB JOIN", String.valueOf(emp_id));
         Log.d("DB JOIN", String.valueOf(skill_id));
-        db.insert(TABLE_EMP_SKILL,null,newJoin);
+        db.insert(TABLE_EMP_SKILL, null, newJoin);
     }
 }

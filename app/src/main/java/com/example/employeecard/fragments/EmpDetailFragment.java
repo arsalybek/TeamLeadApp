@@ -121,10 +121,10 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
                         final int SWIPE_MIN_DISTANCE = 200;
                         final int SWIPE_THRESHOLD_VELOCITY = 200;
                         try {
-                            Log.e("EmpDetailFragmnt", "ongesture");
+                            Log.e("EmpDetailFragment", "ongesture");
                             if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
                                     && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                                Log.e("EmpDetailFragmnt", "Left to right");
+                                Log.e("EmpDetailFragment", "Left to right");
                                 getActivity().getSupportFragmentManager().popBackStack();
                             }
 
@@ -187,7 +187,7 @@ public class EmpDetailFragment extends Fragment implements IChange, AddSkillDial
         }
         Log.d("Fragment",skillList.toString());
         db.addSkill(cnt+1,card.getEmp_id(),skillList.size()+1,skillName);
-        card.getEmp_skills().add(new Skill(skillName, 1));
+        card.getEmp_skills().add(new Skill(skillName, 1));//без этого новый скилл не рисуется
         mDetailAdapter.notifyDataSetChanged();
     }
 }
